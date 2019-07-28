@@ -1,0 +1,13 @@
+imagem01 & 3 & L & 5.45 & LF \\ 
+imagem02 & 4 & L & 11.14 & LV \\ 
+imagem03 & 5 & L & 13.66 & S \\ 
+imagem04 & 6 & M & 14.20 & LV \\ 
+imagem05 & 8 & H & 11.77 & LF \\ 
+imagem06 & 8 & Q & 21.00 & LF \\ 
+imagem07 & 10 & H & 30.97 & LV \\ 
+imagem08 & 12 & H & 35.79 & EH \\ 
+imagem09 & 13 & H & 7.64 & S \\ 
+imagem10 & 17 & H & 25.63 & LV \\ 
+imagem11 & 29 & L & 47.28 & EH \\ 
+imagem12 & 38 & H & 45.22 & EH \\ 
+imagem13 & 39 & Q & 28.69 & LV \\ 

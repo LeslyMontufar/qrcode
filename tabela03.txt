@@ -1,0 +1,13 @@
+imagem27 & 3 & L & 10.08 & S \\ 
+imagem28 & 4 & L & 16.21 & S \\ 
+imagem29 & 5 & L & 23.43 & S \\ 
+imagem30 & 6 & M & 11.45 & S \\ 
+imagem31 & 8 & H & 22.38 & S \\ 
+imagem32 & 8 & Q & 20.69 & S \\ 
+imagem33 & 10 & H & 31.68 & S \\ 
+imagem34 & 12 & H & 11.75 & EH \\ 
+imagem35 & 13 & H & 21.33 & EH \\ 
+imagem36 & 17 & H & 23.97 & S \\ 
+imagem37 & 29 & L & 41.15 & S \\ 
+imagem38 & 38 & H & 38.25 & LV \\ 
+imagem39 & 39 & Q & 28.88 & S \\ 

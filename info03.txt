@@ -1,0 +1,390 @@
+Image Information
+	filename: imagem27.jpg
+	Photo size 2453 2457
+	filenameQR: QR_Code_v03_L.png
+	QR Cutted size: 232 232
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2453 2453
+	Percent of error: 50.1784
+	Time of execution: 167.987
+
+METHOD: Limiar variável
+	Mean: 125.421
+	Size of cutted image: 2408 2398
+	Percent of error: 12.9496
+	Time of execution: 180.854
+
+METHOD: Equalização de Histograma
+	Mean: 120.942
+	Size of cutted image: 2419 2416
+	Percent of error: 19.757
+	Time of execution: 1.41447
+
+METHOD: Subregiões
+	Mean: 126.23
+	Size of cutted image: 2412 2381
+	Percent of error: 10.0847
+	Time of execution: 140.654
+
+Image Information
+	filename: imagem28.jpg
+	Photo size 2665 2661
+	filenameQR: QR_Code_v04_L.png
+	QR Cutted size: 231 231
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2661 2661
+	Percent of error: 50.1377
+	Time of execution: 200.117
+
+METHOD: Limiar variável
+	Mean: 126.476
+	Size of cutted image: 2641 2645
+	Percent of error: 17.5203
+	Time of execution: 131.279
+
+METHOD: Equalização de Histograma
+	Mean: 121.797
+	Size of cutted image: 2644 2650
+	Percent of error: 19.012
+	Time of execution: 0.939446
+
+METHOD: Subregiões
+	Mean: 126.307
+	Size of cutted image: 2631 2642
+	Percent of error: 16.2103
+	Time of execution: 93.5865
+
+Image Information
+	filename: imagem29.jpg
+	Photo size 2746 2745
+	filenameQR: QR_Code_v05_L.png
+	QR Cutted size: 222 222
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2745 2745
+	Percent of error: 49.8904
+	Time of execution: 132.983
+
+METHOD: Limiar variável
+	Mean: 126.376
+	Size of cutted image: 2713 2693
+	Percent of error: 34.7253
+	Time of execution: 134.998
+
+METHOD: Equalização de Histograma
+	Mean: 123.396
+	Size of cutted image: 2714 2694
+	Percent of error: 34.2424
+	Time of execution: 1.01182
+
+METHOD: Subregiões
+	Mean: 126.328
+	Size of cutted image: 2714 2651
+	Percent of error: 23.4336
+	Time of execution: 100.485
+
+Image Information
+	filename: imagem30.jpg
+	Photo size 2794 2783
+	filenameQR: QR_Code_v06_M.png
+	QR Cutted size: 246 246
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2783 2783
+	Percent of error: 50.9221
+	Time of execution: 1134.82
+
+METHOD: Limiar variável
+	Mean: 124.502
+	Size of cutted image: 2745 2741
+	Percent of error: 22.518
+	Time of execution: 244.361
+
+METHOD: Equalização de Histograma
+	Mean: 120.941
+	Size of cutted image: 2746 2741
+	Percent of error: 22.4321
+	Time of execution: 1.78176
+
+METHOD: Subregiões
+	Mean: 125.116
+	Size of cutted image: 2735 2711
+	Percent of error: 11.4532
+	Time of execution: 188.095
+
+Image Information
+	filename: imagem31.jpg
+	Photo size 2888 2895
+	filenameQR: QR_Code_v08_H.png
+	QR Cutted size: 245 245
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2888 2888
+	Percent of error: 49.1045
+	Time of execution: 263.078
+
+METHOD: Limiar variável
+	Mean: 122.892
+	Size of cutted image: 2832 2840
+	Percent of error: 37.8492
+	Time of execution: 265.228
+
+METHOD: Equalização de Histograma
+	Mean: 121.87
+	Size of cutted image: 2832 2840
+	Percent of error: 37.8009
+	Time of execution: 1.94286
+
+METHOD: Subregiões
+	Mean: 122.527
+	Size of cutted image: 2821 2796
+	Percent of error: 22.3773
+	Time of execution: 206.804
+
+Image Information
+	filename: imagem32.jpg
+	Photo size 2913 2888
+	filenameQR: QR_Code_v08_Q.png
+	QR Cutted size: 245 245
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2888 2888
+	Percent of error: 49.4377
+	Time of execution: 267.557
+
+METHOD: Limiar variável
+	Mean: 122.404
+	Size of cutted image: 2849 2847
+	Percent of error: 31.2003
+	Time of execution: 259.292
+
+METHOD: Equalização de Histograma
+	Mean: 121.414
+	Size of cutted image: 2849 2848
+	Percent of error: 31.5818
+	Time of execution: 1.15221
+
+METHOD: Subregiões
+	Mean: 122.474
+	Size of cutted image: 2848 2814
+	Percent of error: 20.693
+	Time of execution: 116.252
+
+Image Information
+	filename: imagem33.jpg
+	Photo size 2613 2610
+	filenameQR: QR_Code_v10_H.png
+	QR Cutted size: 228 228
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2610 2610
+	Percent of error: 48.9689
+	Time of execution: 118.258
+
+METHOD: Limiar variável
+	Mean: 120.571
+	Size of cutted image: 2590 2563
+	Percent of error: 34.0797
+	Time of execution: 119.201
+
+METHOD: Equalização de Histograma
+	Mean: 122.023
+	Size of cutted image: 2590 2563
+	Percent of error: 34.1124
+	Time of execution: 0.960805
+
+METHOD: Subregiões
+	Mean: 121.426
+	Size of cutted image: 2589 2564
+	Percent of error: 31.6771
+	Time of execution: 90.434
+
+Image Information
+	filename: imagem34.jpg
+	Photo size 2835 2818
+	filenameQR: QR_Code_v12_H.png
+	QR Cutted size: 260 260
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2818 2818
+	Percent of error: 48.4734
+	Time of execution: 143.119
+
+METHOD: Limiar variável
+	Mean: 119.015
+	Size of cutted image: 2778 2778
+	Percent of error: 19.3905
+	Time of execution: 759.93
+
+METHOD: Equalização de Histograma
+	Mean: 120.857
+	Size of cutted image: 2782 2756
+	Percent of error: 11.75
+	Time of execution: 1.86366
+
+METHOD: Subregiões
+	Mean: 118.331
+	Size of cutted image: 2785 2750
+	Percent of error: 12.0385
+	Time of execution: 189.372
+
+Image Information
+	filename: imagem35.jpg
+	Photo size 2704 2709
+	filenameQR: QR_Code_v13_H.png
+	QR Cutted size: 207 207
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2704 2704
+	Percent of error: 49.7585
+	Time of execution: 257.238
+
+METHOD: Limiar variável
+	Mean: 124.054
+	Size of cutted image: 2672 2674
+	Percent of error: 26.381
+	Time of execution: 1804.63
+
+METHOD: Equalização de Histograma
+	Mean: 126.686
+	Size of cutted image: 2646 2681
+	Percent of error: 21.3284
+	Time of execution: 0.866068
+
+METHOD: Subregiões
+	Mean: 123.591
+	Size of cutted image: 2617 2684
+	Percent of error: 27.2048
+	Time of execution: 178.31
+
+Image Information
+	filename: imagem36.jpg
+	Photo size 2778 2766
+	filenameQR: QR_Code_v17_H.png
+	QR Cutted size: 255 255
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2766 2766
+	Percent of error: 48.6782
+	Time of execution: 243.588
+
+METHOD: Limiar variável
+	Mean: 117.556
+	Size of cutted image: 2751 2724
+	Percent of error: 25.7701
+	Time of execution: 239.802
+
+METHOD: Equalização de Histograma
+	Mean: 121.198
+	Size of cutted image: 2750 2724
+	Percent of error: 25.2718
+	Time of execution: 1.92263
+
+METHOD: Subregiões
+	Mean: 118.148
+	Size of cutted image: 2750 2696
+	Percent of error: 23.9692
+	Time of execution: 153.648
+
+Image Information
+	filename: imagem37.jpg
+	Photo size 2954 2961
+	filenameQR: QR_Code_v29_L.png
+	QR Cutted size: 266 266
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2954 2954
+	Percent of error: 50.5342
+	Time of execution: 270.455
+
+METHOD: Limiar variável
+	Mean: 121.192
+	Size of cutted image: 2924 2881
+	Percent of error: 46.0866
+	Time of execution: 280.876
+
+METHOD: Equalização de Histograma
+	Mean: 121.192
+	Size of cutted image: 2924 2881
+	Percent of error: 46.0866
+	Time of execution: 2.11028
+
+METHOD: Subregiões
+	Mean: 120.051
+	Size of cutted image: 2924 2858
+	Percent of error: 41.1527
+	Time of execution: 211.21
+
+Image Information
+	filename: imagem38.jpg
+	Photo size 2924 2937
+	filenameQR: QR_Code_v38_H.png
+	QR Cutted size: 169 169
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2924 2924
+	Percent of error: 49.3295
+	Time of execution: 273.551
+
+METHOD: Limiar variável
+	Mean: 112.007
+	Size of cutted image: 2869 2906
+	Percent of error: 38.255
+	Time of execution: 271.024
+
+METHOD: Equalização de Histograma
+	Mean: 123.199
+	Size of cutted image: 2844 2905
+	Percent of error: 45.5726
+	Time of execution: 1.99367
+
+METHOD: Subregiões
+	Mean: 111.982
+	Size of cutted image: 2843 2838
+	Percent of error: 47.1167
+	Time of execution: 181.774
+
+Image Information
+	filename: imagem39.jpg
+	Photo size 2910 2898
+	filenameQR: QR_Code_v39_Q.png
+	QR Cutted size: 173 173
+
+METHOD: Limiar fixo
+	Mean: 0
+	Size of cutted image: 2898 2898
+	Percent of error: 49.1162
+	Time of execution: 254.296
+
+METHOD: Limiar variável
+	Mean: 111.926
+	Size of cutted image: 2849 2840
+	Percent of error: 45.9788
+	Time of execution: 266.459
+
+METHOD: Equalização de Histograma
+	Mean: 121.544
+	Size of cutted image: 2846 2841
+	Percent of error: 44.4285
+	Time of execution: 1.96941
+
+METHOD: Subregiões
+	Mean: 112.544
+	Size of cutted image: 2847 2832
+	Percent of error: 28.8817
+	Time of execution: 202.624
+

@@ -22,12 +22,12 @@
     imshow(image);
     title(def);  
   end
-  function info(T)
-    fprintf('METHOD: %s\n', T.name);
-    fprintf('\tMean: %g\n', T.mean)
-    fprintf('\tSize of cutted image: %g %g\n', T.size);
-    fprintf('\tPercent of error: %g\n', T.err);
-    fprintf('\tTime of execution: %g\n\n', T.timer);
+  function info(T, f)
+    fprintf(f, 'METHOD: %s\n', T.name);
+    fprintf(f, '\tMean: %g\n', T.mean)
+    fprintf(f, '\tSize of cutted image: %g %g\n', T.size);
+    fprintf(f, '\tPercent of error: %g\n', T.err);
+    fprintf(f, '\tTime of execution: %g\n\n', T.timer);
     
   end
   function [T] = limiarconstante(c, im_original, im_modelo)
@@ -94,10 +94,16 @@
   
   clear path;
   
-  var_red = 800;
-  bool = input('Mostrar informacoes dos metodos? (1/0) ');
-  salvar = input('Salvar todas as imagens resultantes dos metodos?(1/0) ');
- 
+  n = input('Numero para os arquivos txt: ');
+  str = '\%';
+  if (bool = input('Salvar logs dos metodos? (1/0) '))
+    f = fopen(sprintf('info%02d.txt', n),'w');
+  end
+  salvar = input('Salvar todas as imagens resultantes dos metodos? (1/0) ');
+  if (gerar_tabela = input('Gerar tabela de erros? (1/0) '))  
+    fid = fopen(sprintf('errortable%02d.txt', n),'w'); 
+  end 
+  
   for ii = 1 : size(Photo.path, 2)
   
   % Coleta das imagens a serem analisadas
@@ -112,9 +118,9 @@
   QR.mean = mean(mean(QR.cutted));
   QR.size = size(QR.cutted);
   
-  fprintf('Image Information\n');
-  fprintf('\tfilename: %s\n\tPhoto size %g %g\n', Photo.filename{1, ii}, Photo.size);
-  fprintf('\tfilenameQR: %s\n\tQR Cutted size: %g %g\n\n', QR.filename{1, ii}, QR.size);
+  fprintf(f, 'Image Information\n');
+  fprintf(f, '\tfilename: %s\n\tPhoto size %g %g\n', Photo.filename{1, ii}, Photo.size);
+  fprintf(f, '\tfilenameQR: %s\n\tQR Cutted size: %g %g\n\n', QR.filename{1, ii}, QR.size);
   
   % Analise das imagens
 
@@ -124,19 +130,19 @@
   Image{1, ii}.M{1,1}.name = 'Limiar fixo'; Image{1, ii}.M{1,1}.ref = 'LF';
   Image{1, ii}.M{1,2}.name = 'Limiar variável'; Image{1, ii}.M{1,2}.ref = 'LV';
   if bool
-    info(Image{1, ii}.M{1,1});
-    info(Image{1, ii}.M{1,2});
+    info(Image{1, ii}.M{1,1}, f);
+    info(Image{1, ii}.M{1,2}, f);
   end
 
   % Binarização pós equalização por histograma
   Image{1, ii}.M{1,3} = equalizacaohist(Photo.gray, QR.cutted);
   Image{1, ii}.M{1,3}.name = 'Equalização de Histograma'; Image{1, ii}.M{1,3}.ref = 'EH';
-  if bool info(Image{1, ii}.M{1,3}); end
+  if bool info(Image{1, ii}.M{1,3}, f); end
   
   % Binarização pós subdivisão em sub-regiões retangulares
   Image{1, ii}.M{1,4} = subregioes(3, Photo.gray, QR.cutted);
   Image{1, ii}.M{1,4}.name = 'Subregiões'; Image{1, ii}.M{1,4}.ref = 'S';
-  if bool info(Image{1, ii}.M{1,4}); end
+  if bool info(Image{1, ii}.M{1,4}, f); end
   
   % Salvando imagens (Opcional)
   if salvar
@@ -145,43 +151,27 @@
       saveimage(Photo.filename{1, ii}(1:end-4), Image{1, ii}.M{1,m});
     end 
     cd ..;
+    cd artigo;
+    savehist(Photo.gray, Photo.filename{1, ii}(1:end-4));
+    cd ..;
   end
- 
-  % Salvar histograma da imagem (Opcional, porém rápido)
-  cd artigo;
-  savehist(Photo.gray, Photo.filename{1, ii}(1:end-4));
-  cd ..;
-
 
   % Informações uteis para a tabela (Opcional)
   Photo.version(ii) = str2num(QR.filename{1, ii}(10:11));
   Photo.errcorrection(ii) = QR.filename{1, ii}(13);
   [tabela.err(ii) ierr] = min([Image{1, ii}.M{1,1}.err Image{1, ii}.M{1,2}.err Image{1, ii}.M{1,3}.err Image{1, ii}.M{1,4}.err]);
   tabela.method{1, ii} = Image{1, ii}.M{1, ierr}.ref;
+  
+  % Salva linha por linha da tabela (Opcional)
+  fprintf(fid, '%s & %.2f%s & %.2f%s & %.2f%s & %.2f%s & %s %s\n', Photo.filename{1, ii}(1:end-4), ...
+    Image{1, ii}.M{1,1}.err,str, Image{1, ii}.M{1,2}.err,str, Image{1, ii}.M{1,3}.err,str, Image{1, ii}.M{1,4}.err,str, ...
+    tabela.method{1, ii}, '\\');
   end
 
-  % Tabela de dados (Opcional)
-  n = input('Numero para os arquivos txt: ');
-  
-  if input('Gerar tabela .txt? (1/0) ')
-  fid = fopen(sprintf('tabela%02d.txt', n),'w');
-  for ii = 1 : size(Photo.path, 2)
-    fprintf(fid, '%s & %g & %c & %.2f & %s %s \n', Photo.filename{1, ii}(1:end-4), ...
-    Photo.version(ii), Photo.errcorrection(ii), ...
-    tabela.err(ii), tabela.method{1, ii}, '\\');
-  end
-  fclose(fid);
-  end
-  if input('Gera tabela de erros de imagem especifica?(1/0) ')
-    ii = input('Imagem: ');
-    for m = 1 : 4
-      fprintf('%.2f\n', Image{1,ii}.M{1,m}.err);
-    end
-  end
- 
-  clear m ii bool salvar;
-  %if input('Save variables?(1/0) ') save(sprintf('variables%02d.txt', n)); end
-   % tamanho de armazenamento muito grande
+  if gerar_tabela fclose(fid); end
+  if bool fclose(f); end
+  clear m ii bool salvar gerar_tabela str f fid;
+
    
   ## imagem 3 padrao 1 
 ##  15.27

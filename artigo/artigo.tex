@@ -185,7 +185,7 @@ São propostos, neste trabalho, os seguintes métodos: \emph{Binarização por L
 
 
 \subsection{Binarização por Limiar} \label{Aconst}
-O primeiro método proposto neste artigo consiste na binarização da imagem a partir de dois limiares distintos. Um fixo $T_1=128$, valor correspondente à metade da escala de cinza (\textit{Método do Limiar Fixo - LF}), e um variável, obtido a partir da intensidade média de nível de cinza da imagem analisada, $T_2=M$  (\textit{Método do Limiar Variável - LV}). Portanto, tem-se as funções de transformação descritas, respectivamente, pelas Equações (\ref{eqLF}) e (\ref{eqLV}).
+O primeiro método proposto neste artigo consiste na binarização da imagem a partir de dois limiares distintos. Um fixo $T_1=128$, valor correspondente à metade da escala de cinza (\textit{Método do Limiar Fixo - LF}), e um variável, obtido a partir da intensidade média de nível de cinza da imagem analisada, $T_2=M$  (\textit{Método do Limiar Variável - LV}). Portanto, tem-se as funções de transformação descritas, respectivamente, pelas Equações (\ref{eqLF}) e (\ref{eqLV}). Assim, as Figuras \ref{figLF} e \ref{figLV} ilustram os resultados obtidos pelos métodos do \emph{Limiar Fixo} e do \emph{Limiar Variável} respectivamente, cujas funções de transformação são descritas pelas Equações (\ref{eqLF}) e (\ref{eqLV}).
 
 
 \begin{gather}
@@ -207,8 +207,9 @@ g_{LV}( x,\ y) =\begin{cases}
 \end{gather}
 %\vspace{0.1cm}
 
+\begin{comment}
 Aplicando-se essas tranformações no QR Code 3 (Veja Tabela \ref{qrtable}) obteve-se as imagens das Figuras \ref{figLF} e \ref{figLV}, nas quais verifica-se a eficiência do método sobre padrões de iluminação mais uniformes, visualizando-se os píxeis de erro das imagens diferença ou na Tabela \ref{tabela-erros}.
-
+\end{comment}
 
 
 \vspace{0.25cm}
@@ -325,83 +326,86 @@ Percebe-se a concentração dos erros associados em intervalos bem definidos par
 Aplicando-se o processo descrito pelo fluxograma da Figura \ref{fluxograma} em todas as imagens coletadas, obtém-se os dados das Tabelas \ref{tabP1}, \ref{tabP2} e \ref{tabP3}, as quais informam o método ótimo para cada imagem e o respectivo erro associado a ele. Além disso, percebe-se melhor aceitacação de métodos com uma só etapa, como \emph{LF} e \emph{LV}, em ambientes mais claros, como o primeiro e segundo padrão de iluminação, da mesma forma que ambientes mais escuros ou com irregularidade expressiva podem requerer pré-processamento, como ocorre nos \emph{Métodos EH} e \emph{S}, com o intuito de uniformizar a imagem e, assim, poder executar a binarização utilizando-se um limiar médio mais adequado.
 
 \vspace{0.5cm}
+\hspace{-0.38cm}
 \begin{minipage}[h]{\columnwidth}
 \begin{scriptsize} 
 \def\arraystretch{1.35}
 \captionsetup{type=table}
-\begin{center}
 \caption{Erro, em porcentagem, referente a cada método e método ótimo aplicado sobre as imagens de QR Code submetidas ao padrão de Iluminação 1.} \label{tabP1} \vspace{-0.2cm}
-\begin{tabular}{c c c c c c}\hline
-\textbf{Nome do QR Code}&\textbf{Método LF(\%)}&\textbf{Método LV(\%)}&\textbf{Método EH(\%)}&\textbf{Método S(\%)}&\textbf{Método Ótimo} \\\hline
-Imagem 01 & QR Code 1 & 5,45 & LF \\
-Imagem 02 & QR Code 2 & 11,14 & LV \\
-Imagem 03 & QR Code 3 & 13,66 & S \\
-Imagem 04 & QR Code 4 & 14,20 & LV \\
-Imagem 05 & QR Code 5 & 11,77 & LF \\
-Imagem 06 & QR Code 6 & 21,00 & LF \\
-Imagem 07 & QR Code 7 & 30,97 & LV \\
-Imagem 08 & QR Code 8 & 35,79 & EH \\
-Imagem 09 & QR Code 9 & 7,64 & S\\
-Imagem 10 & QR Code 10 & 25,63 & LV \\
-Imagem 11 & QR Code 11 & 47,28 & EH\\
-Imagem 12 & QR Code 12 & 45,22 & EH \\
-Imagem 13 & QR Code 13 & 28,69 & LV\\\hline
-\end{tabular}
-\end{center}
+\resizebox{\textwidth}{!}{ %
+\begin{tabular}{c c c c c c} \hline
+\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{ EH(\%)}&\textbf{S(\%)}&\textbf{Método Ótimo} \\\hline
+QR Code 1 & 5.45\% & 5.57\% & 7.95\% & 5.60\% & LF \\
+QR Code 2 & 11.17\% & 11.14\% & 11.34\% & 11.15\% & LV \\
+QR Code 3 & 15.27\% & 13.97\% & 14.26\% & 13.66\% & S \\
+QR Code 4 & 38.67\% & 14.20\% & 15.71\% & 14.22\% & LV \\
+QR Code 5 & 11.77\% & 12.92\% & 12.16\% & 12.13\% & LF \\
+QR Code 6 & 21.00\% & 21.15\% & 21.03\% & 21.11\% & LF \\
+QR Code 7 & 31.53\% & 30.97\% & 31.36\% & 31.57\% & LV \\
+QR Code 8 & 40.00\% & 35.81\% & 35.79\% & 36.53\% & EH \\
+QR Code 9 & 8.83\% & 7.65\% & 9.83\% & 7.64\% & S \\
+QR Code 10 & 27.59\% & 25.63\% & 26.40\% & 27.99\% & LV \\
+QR Code 11 & 47.86\% & 47.59\% & 47.28\% & 47.77\% & EH \\
+QR Code 12 & 47.62\% & 45.32\% & 45.22\% & 45.29\% & EH \\
+QR Code 13 & 34.76\% & 28.69\% & 28.83\% & 29.29\% & LV \\\hline
+\end{tabular}%
+}
 \end{scriptsize}
 \end{minipage}
 
 \vspace{0.5cm}
+\hspace{-0.38cm}
 \begin{minipage}[h]{\columnwidth}
-\begin{scriptsize}
+\begin{scriptsize} 
 \def\arraystretch{1.35}
 \captionsetup{type=table}
-\begin{center}
 \caption{Erro, em porcentagem, referente a cada método e método ótimo aplicado sobre as imagens de QR Code submetidas ao padrão de Iluminação 2.} \label{tabP2} \vspace{-0.2cm}
-\begin{tabular}{c c c c c c}\hline
-\textbf{Nome do QR Code}&\textbf{Método LF(\%)}&\textbf{Método LV(\%)}&\textbf{Método EH(\%)}&\textbf{Método S(\%)}&\textbf{Método Ótimo} \\\hline
-Imagem 14 & QR Code 1 & 10,78 & EH \\
-Imagem 15 & QR Code 2 & 7,43 & LF \\
-Imagem 16 & QR Code 3 & 20,33 & LF \\
-Imagem 17 & QR Code 4 & 19,91 & EH \\
-Imagem 18 & QR Code 5 & 37,88 & EH\\
-Imagem 19 & QR Code 6 & 22,23 & LF\\
-Imagem 20 & QR Code 7 & 25,61 & LF\\
-Imagem 21 & QR Code 8 & 24,43 & S \\
-Imagem 22 & QR Code 9 & 37,59 & LF \\
-Imagem 23 & QR Code 10 & 21,76 & S \\
-Imagem 24 & QR Code 11 & 45,61 & S \\
-Imagem 25 & QR Code 12 & 35,39 & S \\
-Imagem 26 & QR Code 13 & 47,12 & LF\\\hline
-\end{tabular}
-\end{center}
+\resizebox{\textwidth}{!}{ %
+\begin{tabular}{c c c c c c} \hline
+\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{ EH(\%)}&\textbf{S(\%)}&\textbf{Método Ótimo} \\\hline
+QR Code 1 & 10.97\% & 10.97\% & 10.78\% & 10.98\% & EH \\
+QR Code 2 & 7.43\% & 7.86\% & 7.60\% & 7.99\% & LF \\
+QR Code 3 & 20.33\% & 20.73\% & 20.33\% & 21.00\% & LF \\
+QR Code 4 & 21.02\% & 20.75\% & 19.91\% & 21.24\% & EH \\
+QR Code 5 & 44.49\% & 38.11\% & 37.88\% & 38.73\% & EH \\
+QR Code 6 & 22.23\% & 24.32\% & 24.10\% & 25.28\% & LF \\
+QR Code 7 & 25.61\% & 25.97\% & 25.68\% & 26.26\% & LF \\
+QR Code 8 & 34.25\% & 26.02\% & 26.04\% & 24.43\% & S \\
+QR Code 9 & 37.59\% & 38.72\% & 38.72\% & 38.98\% & LF \\
+QR Code 10 & 22.32\% & 22.45\% & 22.51\% & 21.76\% & S \\
+QR Code 11 & 45.92\% & 45.91\% & 45.88\% & 45.61\% & S \\
+QR Code 12 & 35.88\% & 35.85\% & 36.55\% & 35.39\% & S \\
+QR Code 13 & 47.12\% & 51.13\% & 49.16\% & 49.05\% & LF \\\hline
+\end{tabular}%
+}
 \end{scriptsize}
 \end{minipage}
 
 \vspace{0.5cm}
+\hspace{-0.38cm}
 \begin{minipage}[h]{\columnwidth}
-\begin{scriptsize}
+\begin{scriptsize} 
 \def\arraystretch{1.35}
 \captionsetup{type=table}
-\begin{center}
 \caption{Erro, em porcentagem, referente a cada método e método ótimo aplicado sobre as imagens de QR Code submetidas ao padrão de Iluminação 3.} \label{tabP3} \vspace{-0.2cm}
-\begin{tabular}{c c c c c c}\hline
-\textbf{Nome do QR Code}&\textbf{Método LF(\%)}&\textbf{Método LV(\%)}&\textbf{Método EH(\%)}&\textbf{Método S(\%)}&\textbf{Método Ótimo} \\\hline
-Imagem 27 & QR Code 1 & 10,08 & S \\
-Imagem 28 & QR Code 2 & 16,21 & S \\
-Imagem 29 & QR Code 3 & 23,43 & S \\ 
-Imagem 30 & QR Code 4 & 11,45 & S \\
-Imagem 31 & QR Code 5 & 22,38 & S \\
-Imagem 32 & QR Code 6 & 20,69 & S \\
-Imagem 33 & QR Code 7 & 31,68 & S \\
-Imagem 34 & QR Code 8 & 11,75 & EH \\
-Imagem 35 & QR Code 9 & 21,33 & EH \\
-Imagem 36 & QR Code 10 & 23,97 & S \\
-Imagem 37 & QR Code 11 & 41,15 & S \\
-Imagem 38 & QR Code 12 & 38,25 & LV \\
-Imagem 39 & QR Code 13 & 28,88 & S \\\hline
-\end{tabular}
-\end{center}
+\resizebox{\textwidth}{!}{ %
+\begin{tabular}{c c c c c c} \hline
+\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{ EH(\%)}&\textbf{S(\%)}&\textbf{Método Ótimo} \\\hline
+QR Code 1 & 50.18\% & 12.95\% & 19.76\% & 10.08\% & S \\
+QR Code 2 & 50.14\% & 17.52\% & 19.01\% & 16.21\% & S \\
+QR Code 3 & 49.89\% & 34.73\% & 34.24\% & 23.43\% & S \\
+QR Code 4 & 50.92\% & 22.52\% & 22.43\% & 11.45\% & S \\
+QR Code 5 & 49.10\% & 37.85\% & 37.80\% & 22.38\% & S \\
+QR Code 6 & 49.44\% & 31.20\% & 31.58\% & 20.69\% & S \\
+QR Code 7 & 48.97\% & 34.08\% & 34.11\% & 31.68\% & S \\
+QR Code 8 & 48.47\% & 19.39\% & 11.75\% & 12.04\% & EH \\
+QR Code 9 & 49.76\% & 26.38\% & 21.33\% & 27.20\% & EH \\
+QR Code 10 & 48.68\% & 25.77\% & 25.27\% & 23.97\% & S \\
+QR Code 11 & 50.53\% & 46.09\% & 46.09\% & 41.15\% & S \\
+QR Code 12 & 49.33\% & 38.25\% & 45.57\% & 47.12\% & LV \\
+QR Code 13 & 49.12\% & 45.98\% & 44.43\% & 28.88\% & S \\\hline
+\end{tabular}%
+}
 \end{scriptsize}
 \end{minipage}
 

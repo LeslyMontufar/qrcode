@@ -56,21 +56,27 @@
 
 %Introdução: Caso queira pode mudar o título da seção para qualquer outro. Dentro das chaves insira o título da seção e abaixo insira o texto da mesma.
 \section{Introdução}
-Com surgimento no Japão em 1994, os Quick Response Codes (QR Codes) são marca registrada da empresa Denso-Wave Incorporated, uma subsidiária da Toyota, cujo propósito de criação estava em facilitar o processo de catalogação de componentes automobilísticos \cite{denso}. Entretanto, sua utilização não se ateve a essa finalidade, devido à grande velocidade em que podem ser lidos e decodificados eletronicamente. Além disso, é uma ferramenta que tem sido bastante difundida mundialmente, em virtude do rápido desenvolvimento de dispositivos portáteis capazes de ler QR Codes e ao crescente uso comercial, principalmente associado à área de marketing.
+Com surgimento no Japão em 1994, os Quick Response Codes (QR Codes) são marca registrada da empresa Denso-Wave Incorporated, uma subsidiária da Toyota, cujo propósito de criação estava em facilitar o processo de catalogação de componentes automobilísticos \cite{denso}. Entretanto, sua utilização não se ateve a essa finalidade, devido à grande velocidade em que podem ser lidos e decodificados eletronicamente. Além disso, é uma ferramenta que tem sido bastante difundida mundialmente, em virtude do rápido desenvolvimento de dispositivos portáteis capazes de ler QR Codes e ao crescente uso comercial associado, em especial, à área de marketing.
 
-Em termos práticos, a utilização de telefones celulares, câmeras digitais ou outros equipamentos para a coleta da imagem de código QR pode apresentar empecilhos significantes para o reconhecimento do símbolo, ocasionados tanto por fatores do ambiente, quanto pelo forma de manuseio do usuário. Sob essa perspectiva, o ambiente de captura mostra-se como aspecto de bastante relevância e está associado, prinicipalmente, a irregularidades na iluminação. Outrossim, o manuseio do equipamento pelo usuário pode ocasionar a distorção geométrica, problemática que pode ser minimizada, como propõe, por exemplo, Jin et al. \cite{j-chen}, por meio de um algoritmo de correção de imagem de código QR baseado na transformada wavelet, a qual consiste basicamente na decomposição dos dados de forma a possibitar a análise tanto do domínio da frequência quanto do tempo.
+Em termos práticos, a utilização de telefones celulares, câmeras digitais ou outros equipamentos para a coleta da imagem de código QR pode apresentar empecilhos significantes para o reconhecimento do símbolo, ocasionados tanto por fatores do ambiente, quanto pela forma de manuseio do usuário. Sob essa perspectiva, o ambiente de captura mostra-se como aspecto de bastante relevância e associa-se, principalmente, às irregularidades da iluminação. Outrossim, o manuseio do equipamento pelo usuário pode provocar distorção geométrica, problemática amenizada como propõe, por exemplo, 
+Wei et al. \cite{jin-wei}, por meio de um método de correção de imagem
+de código QR com base em morfologia, que consiste na obteção de informações relativas à geometria de topologia de um conjunto desconhecido a partir de outro conjunto bem definido, e Transformada de Hough, método padrão
+para detecção de formas que são facilmente parametrizadas (linhas, círculos, elipses etc) em imagens digitalizadas.
 
-A temática deste artigo, no entanto, contempla os obstáculos devido aos padrões de iluminação irregulares. Ademais, atentar-se, deve, acerca do tipo de imagem que se espera trabalhar, ou seja, comumente de baixo contraste, o que é relevante na escolha do processamento adequado. Por isso, idealizou-se três métodos baseados na limiariação, os quais foram aplicados e recolhidos dados sobre imagens QR Code obtidas em padrões de iluminação diferentes. Dessa maneira, propõe-se verificar o nível de correspondência de imagens de código QR submetidas a métodos de binarização distintos, para assim poder determinar o mais eficiente e estabelecer uma relação com o ambiente de captura.
+Suran \cite{k-suran} desenvolveu um algoritmo de correção de imagem de código QR baseado em Algoritmo de Detecção de Canto e Casco
+Convexo, utilizando binarização localizada e morfologia matemática. Chen et al. \cite{w-chen} apresentou um método de correção
+de imagem de código QR de acordo com a fórmula de transformação afim, a qual é frequentemente utilizada para corrigir distorções causadas pela rotação da câmara. Jin et al. \cite{j-chen} propôs algoritmo de correção de
+imagem de código QR baseado na transformada wavelet, que consiste basicamente na decomposição dos dados de forma a possibilitar a análise tanto no domínio da frequência quanto no do tempo.
+
+A temática deste artigo, no entanto, contempla os obstáculos devido a padrões de iluminação irregulares. Ademais, deve-se atentar ao tipo de imagem que se espera trabalhar, ou seja, comumente de baixo contraste, o que é relevante na escolha do processamento adequado. Por isso, idealizou-se três métodos baseados na limiariação, os quais foram aplicados e recolhidos dados sobre imagens QR Code expostas a padrões de iluminação diferentes. Dessa maneira, propõe-se verificar o nível de correspondência de imagens de código QR submetidas a métodos de binarização distintos, para assim poder determinar o mais eficiente e estabelecer uma relação com o ambiente de captura.
 
 Na Seção \ref{caracteristicas} serão apresentadas características básicas dos QR Codes. Na Seção \ref{metodologia}, o procedimento realizado para a coleta de imagens e exemplificação do impacto provocado pela iluminação irregular Já na Seção \ref{metodos}, são descritos e exemplificados os algoritmos das técnicas de binarização desenvolvidas, assim como realizada a análise de eficiência para as imagens do exemplo. Finalmente, na Seção \ref{resultados}, discute-se acerca dos resultados obtidos com os métodos propostos neste artigo.
 
-
 \section{Características dos Códigos QR} \label{caracteristicas}
-O codificação QR baseia-se na disposição de pequenos quadrados, normalmente de cores preta e branca. Esses são denominados módulos e possuem certa dimensão em píxel. Além disso, o tamanho do código é determinado pelo número de versão, considerando que a Versão 1 possui dimensão de $21\times21$ módulos e para as versões subsequentes há o acréscimo linear de 4 módulos, ou seja, a Versão 2 possui dimensões de 25 x 25, a Versão 3 tem 29 x 29, e assim por diante. 
+O codificação QR baseia-se na disposição de pequenos quadrados, normalmente de cores preta e branca. Esses são denominados módulos e possuem certa dimensão em píxel. Tem-se também que o tamanho do código é determinado pelo número de versão, considerando que a Versão 1 possui dimensão de $21\times21$ módulos e para as versões subsequentes há o acréscimo linear de 4 módulos, ou seja, a Versão 2 possui dimensões de 25 x 25, a Versão 3, 29 x 29, e assim por diante. 
 
-Apresenta também uma técnica de correção de erro, a qual permite a decodificação e, por conseguinte, obtenção da informação contida na imagem, mesmo que se encontre danificada, devido à inserção de dados redundantes ao código. Logo quanto maior a capacidade de correção, menor o espaço para o armazenamento de dados. A Tabela \ref{nivel-correcao} descreve os 4 possíveis níveis de correção de erro.
+QR Codes contém ainda uma técnica de correção de erro, a qual permite a decodificação e obtenção da informação contida numa imagem mesmo que se encontre danificada, devido à inserção de dados redundantes ao código. Logo, quanto maior a capacidade de correção, menor o espaço para o armazenamento de dados. A Tabela \ref{nivel-correcao} descreve os 4 possíveis níveis de correção de erro.
 
-\vspace{0.3cm}
 \begin{minipage}[h]{\columnwidth}
 \begin{scriptsize}
     \def\arraystretch{1.35}
@@ -88,11 +94,16 @@ Apresenta também uma técnica de correção de erro, a qual permite a decodific
     \end{center}
 \end{scriptsize}
 \end{minipage}
-\vspace{0.3cm}
+\vspace{0.1cm}
 
 Conforme a Figura \ref{regioes}, a estrutura do código constitui-se de duas principais regiões: \textit{região de codificação} e \textit{elementos funcionais}. A região de codificação inclui a \textit{Format Information} e \textit{Version Information}, além das \textit{Data Codewords} e \textit{Error Correction Codewords}. Já os elementos funcionais são compostos pelo \textit{Finder Patterns}, \textit{Separator}, \textit{Timing Patterns} e \textit{Alignment Patterns}. Assim, quando uma imagem de QR Code é capturada, busca-se por esses padrões para o reconhecimento e decodificação rápida dos dados \cite{qr-tutorial}.
 
-\vspace{0.4cm}
+
+\section{Metodologia} \label{metodologia}
+
+\subsection{Coleta das imagens QR Code}
+Foram gerados 13 QR Codes, de versões e níveis de correção de erro distintos (Veja Tabela \ref{qrtable}), que foram impressos em folhas A4, sendo 4 imagens por página só frente, fato que influencia no tamanho da imagem a ser coletada, por conseguinte, em sua resolução. Em seguida, buscou-se locais com diferentes padrões de luminosidade, a fim de simular variadas situações problema enfrentadas pela tecnologia de reconhecimento.
+
 \hspace{-0.45cm}
 \begin{minipage}[h]{\columnwidth}
 %\captionsetup{type=figure, singlelinecheck=off, justification=raggedright, margin=0pt, font=footnotesize}
@@ -100,14 +111,14 @@ Conforme a Figura \ref{regioes}, a estrutura do código constitui-se de duas pri
 \includegraphics[width=\columnwidth]{regioes-qr-upercase}
 \caption{\label{regioes}Regiões de um QR Code, ilustrado em símbolo da Versão 7 \cite{chines}.} 
 \end{minipage}
-\vspace{0.2cm}
+\vspace{0.25cm}
 
-\section{Metodologia} \label{metodologia}
+Escolhidos três ambientes, utilizou-se a camêra de um celular (\emph{Samsung SM-J730G}) de $13\ Mpx$ para realizar a captura dos QR Codes impressos. Assim, obteve-se 39 imagens no formato \emph{jpg} de resolução  $4128 \times 3096$. 
+Na Figura \ref{exemplo} há um exemplo de coleta de imagens de um QR Code em específico, QR Code 3 conforme a Tabela \ref{qrtable}, submetido a três padrões de iluminação. 
 
-\subsection{Coleta das imagens QR Code}
-Foram gerados 13 QR Codes, de versões e níveis de correção de erro distintos (Veja Tabela \ref{qrtable}), que foram impressos em folhas A4, sendo 4 imagens por página só frente, fato que influencia no tamanho da imagem a ser coletada, por conseguinte, em sua resolução. Em seguida, buscou-se locais com diferentes padrões de luminosidade, a fim de simular variadas situações problema enfrentadas pela tecnologia de reconhecimento.
+Essas imagens exemplo serão base para a discussão e demonstração das técnicas de binarização propostas neste artigo. A partir das Figuras \ref{exemplo}(a) e (b) torna-se evidente que QR Codes expostos a iluminações mais uniformes tendem a apresentar histogramas com dois picos, um representando os módulos mais escuros e o outro, os mais claros. Constata-se ainda, nas Figuras \ref{exemplo}(c) e (d), que imagens advindas de uma iluminação aproximadamente em degradê dispõem de histogramas com mais picos. Observa-se inclusive que a imagem da Figura \ref{exemplo}(e) resulta em um histograma também com dois picos, porém, em virtude da baixa intensidade do nível de cinza médio, há maior concentração de píxeis com intensidade pertencente ao início da escala de cinza, como mostra a Figura \ref{exemplo}(f).
 
-\vspace{0.2cm}
+\vspace{0.15cm}
 \begin{minipage}[h]{\columnwidth}
 \begin{scriptsize}
     \def\arraystretch{1.35}
@@ -134,19 +145,13 @@ Foram gerados 13 QR Codes, de versões e níveis de correção de erro distintos
     \end{center}
 \end{scriptsize}
 \end{minipage}
-\vspace{0.5cm}
-
-Escolhidos três ambientes, utilizou-se a camêra de um celular (\emph{Samsung SM-J730G}) de $13\ Mpx$ para realizar a captura dos QR Codes impressos. Assim, obteve-se 39 imagens no formato \emph{jpg} de resolução  $4128 \times 3096$. 
-Na Figura \ref{exemplo} há um exemplo de coleta de imagens de um QR Code em específico, QR Code 3 conforme a Tabela \ref{qrtable}, submetido a três padrões de iluminação. 
-
-Essas imagens exemplo serão base para a discussão e demonstração das técnicas de binarização propostas neste artigo. Nas Figuras \ref{exemplo}(a) e (b), é evidente que QR Codes expostos a iluminações mais uniformes tendem a apresentar histogramas com dois picos, um representando os módulos mais escuros e o outro, os mais claros. Constata-se ainda, nas Figuras \ref{exemplo}(c) e (d), que imagens advindas de uma iluminação aproximadamente em degradê dispõem de histogramas com mais picos. Agrega-se que a imagem da Figura \ref{exemplo}(e) resulta em um histograma também com dois picos, mas, em virtude da baixa intensidade nível de cinza médio, os píxeis concentram-se próximos ao início da escala de cinza, como mostra a Figura \ref{exemplo}(f).
 
 
 \subsection{Procedimento realizado sobre as capturas de imagem}
-No fluxograma da Figura \ref{fluxograma}, visualiza-se o procedimento realizado sobre cada imagem capturada, a fim de se obter os dados da Seção \ref{resultados}. Após a captura da imagem, é realizada a transformação para a escala de cinza, para logo depois reduzir ainda mais o espectro de cores da imagem mediante a aplicação do método de binarização (Veja Seção \ref{metodos}). Feito isso, é possível a comparação com o código QR gerado, o que permite gerar as imagens diferença, nas quais os píxeis de divergência entre a imagem gerada e a capturada são marcados na cor vermelha e, em seguida, contabilizados de maneira percentual para cada método desenvolvido e descrito na Seção \ref{metodos}.
+No fluxograma da Figura \ref{fluxograma}, visualiza-se o procedimento realizado sobre cada imagem capturada, a fim de se obter os resultados da Seção \ref{resultados}. Após a captura da imagem, é realizada a transformação para a escala de cinza, para logo depois reduzir ainda mais o espectro de cores da imagem mediante a aplicação do método de binarização idealizado e descrito na Seção \ref{metodos}. Feito isso, é possível a comparação com o código QR gerado, o que permite gerar as imagens diferença, nas quais os píxeis de divergência entre a imagem gerada e a capturada são marcados na cor vermelha e contabilizados de maneira percentual para cada método (Veja Seção \ref{resultados}).
 
 \hspace{-0.365cm} 
-\begin{minipage}[h]{\columnwidth}
+\begin{minipage}[p]{\columnwidth} %%
 \captionsetup{type=figure}
 \subfloat[Iluminação 1]{\includegraphics[width=3.5cm]{imagem03}}\hfill
 \subfloat[Histograma de (a)]{\includegraphics[width=4.52cm]{imagem03-hist}}\\
@@ -188,9 +193,7 @@ São propostos, neste trabalho, os seguintes métodos: \emph{Binarização por L
 \subsection{Binarização por Limiar} \label{Aconst}
 O primeiro método proposto neste artigo consiste na binarização da imagem a partir de dois limiares distintos. Um fixo $T_1=128$, valor correspondente à metade da escala de cinza (\textit{Método do Limiar Fixo - LF}), e um variável, obtido a partir da intensidade média de nível de cinza da imagem analisada, $T_2=M$  (\textit{Método do Limiar Variável - LV}). Portanto, tem-se as funções de transformação descritas, respectivamente, pelas Equações (\ref{eqLF}) e (\ref{eqLV}). Assim, as Figuras \ref{figLF} e \ref{figLV} ilustram os resultados obtidos pelos métodos do \emph{Limiar Fixo} e do \emph{Limiar Variável} respectivamente, cujas funções de transformação são descritas pelas Equações (\ref{eqLF}) e (\ref{eqLV}).
 
-
 \begin{gather}
-\vspace{-1cm}
 g_{LF}( x,\ y) =\begin{cases}
 0 & \quad \quad \text{se }\ f( x,\ y) \leqslant 128\\
 255 & \quad \quad \text{se }\ f( x,\ y)  >128
@@ -244,7 +247,7 @@ De acordo com Gonzalez e Woods \cite{gonzales}, a equalização de histograma te
 \caption{Imagens resultantes da Binarização com Limiar Variável para o QR Code 3 nos padrões de (a) Iluminação 1, (c) Iluminação 2 e (e) Iluminação 3, com suas respectivas imagens diferença em (b), (d) e (f).} \label{figLV}
 \end{minipage}
 
-\vspace{0.05cm}
+%\vspace{0.05cm}
 \hspace{-0.38cm}
 \begin{minipage}[h]{\columnwidth}
 \captionsetup{type=figure}
@@ -274,7 +277,6 @@ De acordo com Gonzalez e Woods \cite{gonzales}, a equalização de histograma te
 
 \subsection{Binarização em Sub-Regiões (S)} \label{Cdiv} 
 O último método proposto neste artigo consiste em, primeiramente, subdividir a imagem em $n$ regiões retangulares, assim cada uma é binarizada utilizando-se a intensidade média $M$ como limiar, para depois unirem-se em uma imagem só binarizada. Escolheu-se $n=9$, quantidade considerada suficiente para observar claramente o efeito desse método sobre as capturas de imagem QR Code. Na Figura \ref{figS} observa-se os resultados obtidos e, da Tabela \ref{tabela-erros}, afirma-se que obteve baixo nível de erro, com excessão da imagem no segundo padrão de iluminação, cuja irregulidade acentuada provocou que, na separação, as regiões mais claras fossem mais afetadas pelos níveis de intensidades mais escuros intrínsecos do código.
-
 
 \subsection{Análise erros final para as capturas do QR Code 3}
 A aplicação dos diferentes métodos de binarização desenvolvidos e a subsequente comparação com o símbolo QR representado nas imagens de cada padrão permitiu a elaboração da Tabela \ref{tabela-erros}. Nela são contemplados os erros a associados a cada método aplicado aos padrões de Iluminação 1, 2 e 3. 
@@ -418,7 +420,6 @@ A tecnologia de reconhecimento de QR Code enfrenta problemas significativos prov
     “Basic Info”. 
     Disponível em \url{http://www.denso-wave.com/en/adcd/fundamental/index.html}. Acesso em jun. 2019.
 
-\begin{comment}
 \bibitem{jin-wei}
 J. W. Wei, S. G. Dai, P. A. Mu, 
 "QR code correction and positioning method based on morphology and Hough transform", 
@@ -434,12 +435,6 @@ K. Suran,
  W. B. Chen, G. B. Yang, L. Feng, 
 "A low complexity image preprocessing method for QR code recognition", 
 \emph{Journal of Hunan University}, Hunan, China, 2012.
-\end{comment}
-
-\bibitem{chines}
-  M. Li, P. Cao, L. Feng, L. Yu, J. Chen, J. Wang,
-   “The research of QR code image correction based on image gray feature”,
-   \emph{ 2017 First International Conference on Electronics Instrumentation \& Information Systems (EIIS)}, Harbin, China, June 2017.
 
 \bibitem{j-chen}
 C. Jin, J. H. Yuan, L. L. Li, E. Y. Chen, G. Han, T. Tang, 
@@ -447,6 +442,12 @@ C. Jin, J. H. Yuan, L. L. Li, E. Y. Chen, G. Han, T. Tang,
 based on wavelet transform".
 \emph{2012 IEEE 3rd International Conference on
 Software Engineering and Service Science}, Chongqing, China, 2012.
+
+\bibitem{chines}
+  M. Li, P. Cao, L. Feng, L. Yu, J. Chen, J. Wang,
+   “The research of QR code image correction based on image gray feature”,
+   \emph{ 2017 First International Conference on Electronics Instrumentation \& Information Systems (EIIS)}, Harbin, China, June 2017.
+
 
 
 \bibitem{qr-tutorial}

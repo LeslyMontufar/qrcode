@@ -10,6 +10,7 @@
 %\usepackage{subcaption}
 \usepackage{hyperref}%
 \usepackage{array}
+\usepackage{booktabs}
 %\usepackage{wrapfig}
 %%===========================
 
@@ -55,11 +56,11 @@
 
 %Introdução: Caso queira pode mudar o título da seção para qualquer outro. Dentro das chaves insira o título da seção e abaixo insira o texto da mesma.
 \section{Introdução}
-Com surgimento no Japão em 1994, os Quick Response Codes (QR Codes) são marca registrada da empresa Denso-Wave Incorporated, uma subsidiária da Toyota, cujo propósito de criação estava em facilitar o processo de catalogação de componentes automobilísticos \cite{denso}. Entretanto, sua utilização não se ateve a essa finalidade, devido à grande velocidade em que podem ser lidos e decodificados eletronicamente. Além disso, é uma ferramenta que tem sido bastante difundida mundialmente, devido ao rápido desenvolvimento de dispositivos portáteis capazes de ler QR Codes e ao crescente uso comercial, principalmente associado à área de marketing.
+Com surgimento no Japão em 1994, os Quick Response Codes (QR Codes) são marca registrada da empresa Denso-Wave Incorporated, uma subsidiária da Toyota, cujo propósito de criação estava em facilitar o processo de catalogação de componentes automobilísticos \cite{denso}. Entretanto, sua utilização não se ateve a essa finalidade, devido à grande velocidade em que podem ser lidos e decodificados eletronicamente. Além disso, é uma ferramenta que tem sido bastante difundida mundialmente, em virtude do rápido desenvolvimento de dispositivos portáteis capazes de ler QR Codes e ao crescente uso comercial, principalmente associado à área de marketing.
 
-Em termos práticos, a utilização de telefones celulares, câmeras digitais ou outros equipamentos para a coleta da imagem de código QR pode apresentar empecilhos significantes para o reconhecimento do símbolo, devido tanto a fatores do ambiente, quanto ao manuseio do usuário. Sob essa perspectiva, o ambiente de captura mostra-se como aspecto de bastante relevância e está associado, prinicipalmente, a irregularidades na iluminação. Outrossim, o manuseio do equipamento pelo usuário pode ocasionar a distorção geométrica, problemática que pode ser minimizada, como propõe, por exemplo, Jin et al. \cite{j-chen}, por meio de um algoritmo de correção de imagem de código QR baseado na transformada wavelet, a qual consiste basicamente na decomposição dos dados de forma a possibitar a análise tanto do domínio da frequência quanto do tempo.
+Em termos práticos, a utilização de telefones celulares, câmeras digitais ou outros equipamentos para a coleta da imagem de código QR pode apresentar empecilhos significantes para o reconhecimento do símbolo, ocasionados tanto por fatores do ambiente, quanto pelo forma de manuseio do usuário. Sob essa perspectiva, o ambiente de captura mostra-se como aspecto de bastante relevância e está associado, prinicipalmente, a irregularidades na iluminação. Outrossim, o manuseio do equipamento pelo usuário pode ocasionar a distorção geométrica, problemática que pode ser minimizada, como propõe, por exemplo, Jin et al. \cite{j-chen}, por meio de um algoritmo de correção de imagem de código QR baseado na transformada wavelet, a qual consiste basicamente na decomposição dos dados de forma a possibitar a análise tanto do domínio da frequência quanto do tempo.
 
-A temática deste artigo, no entanto, contempla os obstáculos devido a padrões de iluminação irregulares. Ademais, atentar-se, deve, acerca do tipo de imagem que se espera trabalhar, ou seja, comumente de baixo contraste, o que é relevante na escolha do processamento adequado. Por isso, idealizou-se três métodos baseados na limiariação, os quais foram aplicados e recolhidos dados sobre imagens QR Code obtidas em padrões de iluminação diferentes. Dessa maneira, propõe-se verificar o nível de correspondência de imagens de código QR submetidas a métodos de binarização distintos, para assim poder determinar o mais eficiente e estabelecer uma relação com o ambiente de captura.
+A temática deste artigo, no entanto, contempla os obstáculos devido aos padrões de iluminação irregulares. Ademais, atentar-se, deve, acerca do tipo de imagem que se espera trabalhar, ou seja, comumente de baixo contraste, o que é relevante na escolha do processamento adequado. Por isso, idealizou-se três métodos baseados na limiariação, os quais foram aplicados e recolhidos dados sobre imagens QR Code obtidas em padrões de iluminação diferentes. Dessa maneira, propõe-se verificar o nível de correspondência de imagens de código QR submetidas a métodos de binarização distintos, para assim poder determinar o mais eficiente e estabelecer uma relação com o ambiente de captura.
 
 Na Seção \ref{caracteristicas} serão apresentadas características básicas dos QR Codes. Na Seção \ref{metodologia}, o procedimento realizado para a coleta de imagens e exemplificação do impacto provocado pela iluminação irregular Já na Seção \ref{metodos}, são descritos e exemplificados os algoritmos das técnicas de binarização desenvolvidas, assim como realizada a análise de eficiência para as imagens do exemplo. Finalmente, na Seção \ref{resultados}, discute-se acerca dos resultados obtidos com os métodos propostos neste artigo.
 
@@ -67,9 +68,9 @@ Na Seção \ref{caracteristicas} serão apresentadas características básicas d
 \section{Características dos Códigos QR} \label{caracteristicas}
 O codificação QR baseia-se na disposição de pequenos quadrados, normalmente de cores preta e branca. Esses são denominados módulos e possuem certa dimensão em píxel. Além disso, o tamanho do código é determinado pelo número de versão, considerando que a Versão 1 possui dimensão de $21\times21$ módulos e para as versões subsequentes há o acréscimo linear de 4 módulos, ou seja, a Versão 2 possui dimensões de 25 x 25, a Versão 3 tem 29 x 29, e assim por diante. 
 
-Apresenta também uma técnica de correção de erro, a qual permite a decodificação e, por conseguinte, obtenção da informação contida na imagem, mesmo que se encontre danificada, devido a inserção de dados redundantes ao código. Logo quanto maior a capacidade de correção, menor o espaço para o armazenamento de dados. A Tabela \ref{nivel-correcao} descreve os 4 possíveis níveis de correção de erro.
+Apresenta também uma técnica de correção de erro, a qual permite a decodificação e, por conseguinte, obtenção da informação contida na imagem, mesmo que se encontre danificada, devido à inserção de dados redundantes ao código. Logo quanto maior a capacidade de correção, menor o espaço para o armazenamento de dados. A Tabela \ref{nivel-correcao} descreve os 4 possíveis níveis de correção de erro.
 
-\vspace{0.15cm}
+\vspace{0.3cm}
 \begin{minipage}[h]{\columnwidth}
 \begin{scriptsize}
     \def\arraystretch{1.35}
@@ -77,12 +78,12 @@ Apresenta também uma técnica de correção de erro, a qual permite a decodific
     \begin{center}
     \caption{Níveis de Correção de Erro.} \label{nivel-correcao}
     \vspace{-0.2cm}
-    \begin{tabular}{ c | c } \hline
-    \textbf{Nível de correção de erro}&  \textbf{Capacidade de correção}\\\hline
+    \begin{tabular}{ c  c } \toprule
+    \textbf{Nível de correção de erro}&  \textbf{Capacidade de correção}\\\midrule
      L & Recupera 7\% dos dados \\
     M & Recupera 15\% dos dados \\
     Q & Recupera 25\% dos dados \\
-    H & Recupera 30\% dos dados \\\hline
+    H & Recupera 30\% dos dados \\\bottomrule
     \end{tabular}
     \end{center}
 \end{scriptsize}
@@ -91,7 +92,7 @@ Apresenta também uma técnica de correção de erro, a qual permite a decodific
 
 Conforme a Figura \ref{regioes}, a estrutura do código constitui-se de duas principais regiões: \textit{região de codificação} e \textit{elementos funcionais}. A região de codificação inclui a \textit{Format Information} e \textit{Version Information}, além das \textit{Data Codewords} e \textit{Error Correction Codewords}. Já os elementos funcionais são compostos pelo \textit{Finder Patterns}, \textit{Separator}, \textit{Timing Patterns} e \textit{Alignment Patterns}. Assim, quando uma imagem de QR Code é capturada, busca-se por esses padrões para o reconhecimento e decodificação rápida dos dados \cite{qr-tutorial}.
 
-\vspace{0.25cm}
+\vspace{0.4cm}
 \hspace{-0.45cm}
 \begin{minipage}[h]{\columnwidth}
 %\captionsetup{type=figure, singlelinecheck=off, justification=raggedright, margin=0pt, font=footnotesize}
@@ -99,7 +100,7 @@ Conforme a Figura \ref{regioes}, a estrutura do código constitui-se de duas pri
 \includegraphics[width=\columnwidth]{regioes-qr-upercase}
 \caption{\label{regioes}Regiões de um QR Code, ilustrado em símbolo da Versão 7 \cite{chines}.} 
 \end{minipage}
-%\vspace{0.1cm}
+\vspace{0.2cm}
 
 \section{Metodologia} \label{metodologia}
 
@@ -114,8 +115,8 @@ Foram gerados 13 QR Codes, de versões e níveis de correção de erro distintos
     \begin{center}
     \caption{QR Codes gerados.} \label{qrtable}
     \vspace{-0.2cm}
-    \begin{tabular}{ c  c   c} \hline
-    \textbf{Nome da Imagem}&  \textbf{Versão}&  \textbf{Nível de Correção de Erro}\\\hline
+    \begin{tabular}{ c  c   c} \toprule
+    \textbf{Nome da Imagem}&  \textbf{Versão}&  \textbf{Nível de Correção de Erro}\\\midrule
     QR Code 1  & 3 & L \\
     QR Code 2  & 4 & L \\
     QR Code 3  & 5 & L \\
@@ -128,7 +129,7 @@ Foram gerados 13 QR Codes, de versões e níveis de correção de erro distintos
     QR Code 10 & 17 & H  \\
     QR Code 11 & 29 & L  \\
     QR Code 12 & 38 & H \\
-    QR Code 13 & 39 & Q \\\hline
+    QR Code 13 & 39 & Q \\\bottomrule
     \end{tabular}
     \end{center}
 \end{scriptsize}
@@ -177,11 +178,11 @@ g( x,\ y) =\begin{cases}
 \end{cases}
 \label{Threshold}
 \end{gather}
-\vspace{0.1cm}
+%\vspace{0.1cm}
 
 onde 0 e 255 são, respectivamente, as cores preta e branca para imagens em níveis de cinza codificadas em 8 bits.\\
 
-São propostos, neste trabalho, os seguintes métodos: \emph{Binarização por Limiar}; \emph{Binarização Pós Equalização por Histograma}; \emph{Binarização em Sub-Regiões}. A seguir, são descritos os métodos desenvolvidos e utiliza-se imagens de um mesmo QR Code para melhor compreensão, as quais apresentam interessantes condições de iluminação para análise (Veja Figura \ref{exemplo}).
+São propostos, neste trabalho, os seguintes métodos: \emph{Binarização por Limiar}; \emph{Binarização Pós Equalização por Histograma}; \emph{Binarização em Sub-Regiões}. A seguir, são descritos os métodos desenvolvidos e utiliza-se imagens de um mesmo QR Code para melhor compreensão, as quais apresentam interessantes condições de iluminação (Veja Figura \ref{exemplo}).
 
 
 \subsection{Binarização por Limiar} \label{Aconst}
@@ -205,17 +206,11 @@ g_{LV}( x,\ y) =\begin{cases}
 \end{cases}
 \label{eqLV}
 \end{gather}
-%\vspace{0.1cm}
+\vspace{0.03cm}
 
-\begin{comment}
-Aplicando-se essas tranformações no QR Code 3 (Veja Tabela \ref{qrtable}) obteve-se as imagens das Figuras \ref{figLF} e \ref{figLV}, nas quais verifica-se a eficiência do método sobre padrões de iluminação mais uniformes, visualizando-se os píxeis de erro das imagens diferença ou na Tabela \ref{tabela-erros}.
-\end{comment}
-
-
-\vspace{0.25cm}
 Observe, na Figura \ref{figLF}(e), que a técnica \emph{LF} sobre a imagem no padrão de Iluminação 3 obteve resultado desvantajoso, uma vez que a baixa iluminação do local levou ao escurecimento total da imagem, o que invialibiliza o reconhecimento do símbolo. Infere-se, assim, que a intensidade de todos os pixeis da imagem são inferiores a 128. Já na Figura \ref{figLV}(e), a técnica \emph{LV} revelou menor erro para esse padrão e, agora, é visível o símbolo QR (Veja Tabela \ref{tabela-erros}). 
 
-Entretanto, não existe relação fixa de eficácia entre os métodos de binarização por limiar, uma vez que nem sempre a aplicação do método \emph{LV} trará resultado mais favorável que o \emph{LF}. Deve-se considerar que os píxeis pretos intrínsecos ao código afetam na determinação da intensidade média $M$ relativa à imagem, por conseguinte, quanto maior o tamanho do símbolo, ou seja maior número de versão, maior será a quantidade de píxeis escuros instrínsecos ao código que influenciará o valor $M$. Para essas situações \emph{LF} pode ser método ótimo ou pelo menos superior a \emph{LV}, o que é enfatizado nos resultados obtidos para as imagens do segundo padrão de QR Codes de versões mais elevadas (Veja Tabela \ref{tabP2}).
+Entretanto, não existe relação fixa de eficácia entre os métodos de binarização por limiar, já que nem sempre a aplicação do método \emph{LV} trará melhor resultado que o \emph{LF}. Deve-se considerar que os píxeis pretos intrínsecos ao código afetam na determinação da intensidade média $M$ da imagem, por conseguinte, quanto maior o tamanho do símbolo, ou seja maior número de versão, maior será a quantidade de píxeis escuros instrínsecos ao código que influenciarão $M$. Para essas situações \emph{LF} pode ser método ótimo ou pelo menos superior a \emph{LV}, o que se confere nos resultados da Tabela \ref{tabP2} para as imagens de QR Codes de versões elevadas do padrão de Iluminação 2.
 
 \hspace{-0.43cm}
 \begin{minipage}[h]{\columnwidth}
@@ -249,7 +244,7 @@ De acordo com Gonzalez e Woods \cite{gonzales}, a equalização de histograma te
 \caption{Imagens resultantes da Binarização com Limiar Variável para o QR Code 3 nos padrões de (a) Iluminação 1, (c) Iluminação 2 e (e) Iluminação 3, com suas respectivas imagens diferença em (b), (d) e (f).} \label{figLV}
 \end{minipage}
 
-\vspace{0.3cm}
+\vspace{0.05cm}
 \hspace{-0.38cm}
 \begin{minipage}[h]{\columnwidth}
 \captionsetup{type=figure}
@@ -257,11 +252,10 @@ De acordo com Gonzalez e Woods \cite{gonzales}, a equalização de histograma te
 \subfloat[]{\includegraphics[width=4.52cm]{imagem14-hist}}\\
 \subfloat[]{\includegraphics[width=3.5cm]{imagem14-EH-primaria}}\hfill 
 \subfloat[]{\includegraphics[width=4.52cm]{imagem14-EH-hist}} 
-\vspace{-0.05cm}
+\vspace{-0.1cm}
 \caption{(a) QR Code 1 submetido ao padrão de Iluminação 2, (b) histograma de (a), (c) imagem resultante da equalização de histograma e (d) histograma de (c).}
 \label{imagemEH}
 \end{minipage}
-
 
 
 \hspace{-0.38cm}
@@ -283,8 +277,7 @@ O último método proposto neste artigo consiste em, primeiramente, subdividir a
 
 
 \subsection{Análise erros final para as capturas do QR Code 3}
-A aplicação dos diferentes métodos de binarização desenvolvidos e a subsequente comparação com o símbolo QR representado nas imagens de cada padrão permitiu a elaboração da Tabela \ref{tabela-erros}. Nela são contemplados os erros a associados a cada método aplicados nos 3 padrões de iluminação. 
-
+A aplicação dos diferentes métodos de binarização desenvolvidos e a subsequente comparação com o símbolo QR representado nas imagens de cada padrão permitiu a elaboração da Tabela \ref{tabela-erros}. Nela são contemplados os erros a associados a cada método aplicado aos padrões de Iluminação 1, 2 e 3. 
 
 % imagem monocromatica = ou em escala de cinza
 \hspace{-0.38cm}
@@ -300,30 +293,30 @@ A aplicação dos diferentes métodos de binarização desenvolvidos e a subsequ
 \caption{Imagens resultantes da Binarização em Sub-regiões para o QR Code 3 nos padrões de (a) Iluminação 1, (c) Iluminação 2 e (e) Iluminação 3, com suas respectivas imagens diferença em (b), (d) e (f).} \label{figS}
 \end{minipage}
 
-\vspace{0.5cm}
-Percebe-se a concentração dos erros associados em intervalos bem definidos para os padrões Iluminação 1 e 2, uma vez que as intensidades dos píxeis estão melhor distribuídas ao longo da escala de cinza, como pode ser verificado nos histogramas da Figura \ref{exemplo}. Isso não ocorre para o terceiro padrão, devido à sua natureza escura, além disso verifica-se melhores resultados para técnicas que envolvem mais de uma etapa, ou seja, \emph{Métodos EH} e \emph{S}, uma vez que é necessária primeiramente a otimização do contraste da imagem a fim de se obter um limiar médio $M$ mais adequado. 
-
-\vspace{0.3cm}
+\vspace{0.8cm}
 \begin{minipage}[h]{\columnwidth}
 \begin{scriptsize}
 \def\arraystretch{1.35}
     \captionsetup{type=table}
     \begin{center}
     \caption{Erros associados às capturas de imagem do QR Code 3} \label{tabela-erros} \vspace{-0.2cm}
-    \begin{tabular}{ c  c  c  c } \hline
-    \textbf{Método}&  \textbf{Iluminação 1}& \textbf{Iluminação 2}& \textbf{Iluminação 3}\\\hline
+    \begin{tabular}{ c  c  c  c } \toprule
+    \textbf{Método}&  \textbf{Iluminação 1}& \textbf{Iluminação 2}& \textbf{Iluminação 3}\\\midrule
      LF & 15,27\% & 20,33\% & 49,89\%\\
      LV & 13,97\% & 20,73\% & 34,73\%\\
      EH & 14,26\% & 20,33\% & 34,24\%\\
-     S   & 13,66\% & 21,00\% & 23,43\%\\\hline
+     S   & 13,66\% & 21,00\% & 23,43\%\\\bottomrule
     \end{tabular}
    \end{center}
 \end{scriptsize}
 \end{minipage}
 
-
 \section{Análise dos resultados} \label{resultados}
-Aplicando-se o processo descrito pelo fluxograma da Figura \ref{fluxograma} em todas as imagens coletadas, obtém-se os dados das Tabelas \ref{tabP1}, \ref{tabP2} e \ref{tabP3}, as quais informam o método ótimo para cada imagem e o respectivo erro associado a ele. Além disso, percebe-se melhor aceitacação de métodos com uma só etapa, como \emph{LF} e \emph{LV}, em ambientes mais claros, como o primeiro e segundo padrão de iluminação, da mesma forma que ambientes mais escuros ou com irregularidade expressiva podem requerer pré-processamento, como ocorre nos \emph{Métodos EH} e \emph{S}, com o intuito de uniformizar a imagem e, assim, poder executar a binarização utilizando-se um limiar médio mais adequado.
+Aplicando-se o processo descrito pelo fluxograma da Figura \ref{fluxograma} em todas as imagens coletadas, obtém-se os resultados das Tabelas \ref{tabP1}, \ref{tabP2} e \ref{tabP3}, as quais informam os erros associados a cada método aplicado e o método ótimo, ou seja que apresentou menor erro, para as imagens dos padrões de Iluminação 1, 2 e 3. Note que analisando imagem a imagem, os valores percentuais de erro concentram-se em intervalos bem definidos para os padrões Iluminação 1 e 2, haja vista que as intensidades dos píxeis encontram-se melhor distribuídas ao longo da escala de cinza, como pode ser verificado nos histogramas da Figura \ref{exemplo}. Esse comportamento não ocorre para o padrão de Iluminação 3, pois, devido à sua natureza escura, técnicas que envolvem somente uma etapa, como como \emph{LF} e \emph{LV}, são insatisfatórias, já que é necessário primeiro otimização do contraste da imagem, seja por meio da equalização de histograma ou pela análise em subregiões, das quais, individualmente, espera-se melhor distribuição das intensidades dos píxeis.
+
+\begin{comment}
+Além disso, percebe-se melhor aceitação de métodos com uma só etapa, como \emph{LF} e \emph{LV}, em ambientes mais claros, como o primeiro e segundo padrão de iluminação, da mesma forma que ambientes mais escuros ou com irregularidade expressiva podem requerer pré-processamento, como ocorre nos \emph{Métodos EH} e \emph{S}, com o intuito de uniformizar a imagem e, assim, poder executar a binarização utilizando-se um limiar médio mais adequado.
+\end{comment}
 
 \vspace{0.5cm}
 \hspace{-0.38cm}
@@ -331,23 +324,23 @@ Aplicando-se o processo descrito pelo fluxograma da Figura \ref{fluxograma} em t
 \begin{scriptsize} 
 \def\arraystretch{1.35}
 \captionsetup{type=table}
-\caption{Erro, em porcentagem, referente a cada método e método ótimo aplicado sobre as imagens de QR Code submetidas ao padrão de Iluminação 1.} \label{tabP1} \vspace{-0.2cm}
+\caption{Erro percentual de cada método aplicado e método ótimo para as imagens de QR Code submetidas ao padrão de Iluminação 1.} \label{tabP1} \vspace{-0.2cm}
 \resizebox{\textwidth}{!}{ %
-\begin{tabular}{c c c c c c} \hline
-\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{ EH(\%)}&\textbf{S(\%)}&\textbf{Método Ótimo} \\\hline
-QR Code 1 & 5.45\% & 5.57\% & 7.95\% & 5.60\% & LF \\
-QR Code 2 & 11.17\% & 11.14\% & 11.34\% & 11.15\% & LV \\
-QR Code 3 & 15.27\% & 13.97\% & 14.26\% & 13.66\% & S \\
-QR Code 4 & 38.67\% & 14.20\% & 15.71\% & 14.22\% & LV \\
-QR Code 5 & 11.77\% & 12.92\% & 12.16\% & 12.13\% & LF \\
-QR Code 6 & 21.00\% & 21.15\% & 21.03\% & 21.11\% & LF \\
-QR Code 7 & 31.53\% & 30.97\% & 31.36\% & 31.57\% & LV \\
-QR Code 8 & 40.00\% & 35.81\% & 35.79\% & 36.53\% & EH \\
-QR Code 9 & 8.83\% & 7.65\% & 9.83\% & 7.64\% & S \\
-QR Code 10 & 27.59\% & 25.63\% & 26.40\% & 27.99\% & LV \\
-QR Code 11 & 47.86\% & 47.59\% & 47.28\% & 47.77\% & EH \\
-QR Code 12 & 47.62\% & 45.32\% & 45.22\% & 45.29\% & EH \\
-QR Code 13 & 34.76\% & 28.69\% & 28.83\% & 29.29\% & LV \\\hline
+\begin{tabular}{c c c c c c} \toprule
+\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{ EH(\%)}&\textbf{S(\%)}&\textbf{Método Ótimo} \\\midrule
+QR Code 1 & 5,45\% & 5,57\% & 7,95\% & 5,60\% & LF \\
+QR Code 2 & 11,17\% & 11,14\% & 11,34\% & 11,15\% & LV \\
+QR Code 3 & 15,27\% & 13,97\% & 14,26\% & 13,66\% & S \\
+QR Code 4 & 38,67\% & 14,20\% & 15,71\% & 14,22\% & LV \\
+QR Code 5 & 11,77\% & 12,92\% & 12,16\% & 12,13\% & LF \\
+QR Code 6 & 21,00\% & 21,15\% & 21,03\% & 21,11\% & LF \\
+QR Code 7 & 31,53\% & 30,97\% & 31,36\% & 31,57\% & LV \\
+QR Code 8 & 40,00\% & 35,81\% & 35,79\% & 36,53\% & EH \\
+QR Code 9 & 8,83\% & 7,65\% & 9,83\% & 7,64\% & S \\
+QR Code 10 & 27,59\% & 25,63\% & 26,40\% & 27,99\% & LV \\
+QR Code 11 & 47,86\% & 47,59\% & 47,28\% & 47,77\% & EH \\
+QR Code 12 & 47,62\% & 45,32\% & 45,22\% & 45,29\% & EH \\
+QR Code 13 & 34,76\% & 28,69\% & 28,83\% & 29,29\% & LV \\\bottomrule
 \end{tabular}%
 }
 \end{scriptsize}
@@ -359,23 +352,23 @@ QR Code 13 & 34.76\% & 28.69\% & 28.83\% & 29.29\% & LV \\\hline
 \begin{scriptsize} 
 \def\arraystretch{1.35}
 \captionsetup{type=table}
-\caption{Erro, em porcentagem, referente a cada método e método ótimo aplicado sobre as imagens de QR Code submetidas ao padrão de Iluminação 2.} \label{tabP2} \vspace{-0.2cm}
+\caption{Erro percentual de cada método aplicado e método ótimo para as imagens de QR Code submetidas ao padrão de Iluminação 2.} \label{tabP2} \vspace{-0.2cm}
 \resizebox{\textwidth}{!}{ %
-\begin{tabular}{c c c c c c} \hline
-\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{ EH(\%)}&\textbf{S(\%)}&\textbf{Método Ótimo} \\\hline
-QR Code 1 & 10.97\% & 10.97\% & 10.78\% & 10.98\% & EH \\
-QR Code 2 & 7.43\% & 7.86\% & 7.60\% & 7.99\% & LF \\
-QR Code 3 & 20.33\% & 20.73\% & 20.33\% & 21.00\% & LF \\
-QR Code 4 & 21.02\% & 20.75\% & 19.91\% & 21.24\% & EH \\
-QR Code 5 & 44.49\% & 38.11\% & 37.88\% & 38.73\% & EH \\
-QR Code 6 & 22.23\% & 24.32\% & 24.10\% & 25.28\% & LF \\
-QR Code 7 & 25.61\% & 25.97\% & 25.68\% & 26.26\% & LF \\
-QR Code 8 & 34.25\% & 26.02\% & 26.04\% & 24.43\% & S \\
-QR Code 9 & 37.59\% & 38.72\% & 38.72\% & 38.98\% & LF \\
-QR Code 10 & 22.32\% & 22.45\% & 22.51\% & 21.76\% & S \\
-QR Code 11 & 45.92\% & 45.91\% & 45.88\% & 45.61\% & S \\
-QR Code 12 & 35.88\% & 35.85\% & 36.55\% & 35.39\% & S \\
-QR Code 13 & 47.12\% & 51.13\% & 49.16\% & 49.05\% & LF \\\hline
+\begin{tabular}{c c c c c c} \toprule
+\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{ EH(\%)}&\textbf{S(\%)}&\textbf{Método Ótimo} \\\midrule
+QR Code 1 & 10,97\% & 10,97\% & 10,78\% & 10,98\% & EH \\
+QR Code 2 & 7,43\% & 7,86\% & 7,60\% & 7,99\% & LF \\
+QR Code 3 & 20,33\% & 20,73\% & 20,33\% & 21,00\% & LF \\
+QR Code 4 & 21,02\% & 20,75\% & 19,91\% & 21,24\% & EH \\
+QR Code 5 & 44,49\% & 38,11\% & 37,88\% & 38,73\% & EH \\
+QR Code 6 & 22,23\% & 24,32\% & 24,10\% & 25,28\% & LF \\
+QR Code 7 & 25,61\% & 25,97\% & 25,68\% & 26,26\% & LF \\
+QR Code 8 & 34,25\% & 26,02\% & 26,04\% & 24,43\% & S \\
+QR Code 9 & 37,59\% & 38,72\% & 38,72\% & 38,98\% & LF \\
+QR Code 10 & 22,32\% & 22,45\% & 22,51\% & 21,76\% & S \\
+QR Code 11 & 45,92\% & 45,91\% & 45,88\% & 45,61\% & S \\
+QR Code 12 & 35,88\% & 35,85\% & 36,55\% & 35,39\% & S \\
+QR Code 13 & 47,12\% & 51,13\% & 49,16\% & 49,05\% & LF \\\bottomrule
 \end{tabular}%
 }
 \end{scriptsize}
@@ -387,27 +380,29 @@ QR Code 13 & 47.12\% & 51.13\% & 49.16\% & 49.05\% & LF \\\hline
 \begin{scriptsize} 
 \def\arraystretch{1.35}
 \captionsetup{type=table}
-\caption{Erro, em porcentagem, referente a cada método e método ótimo aplicado sobre as imagens de QR Code submetidas ao padrão de Iluminação 3.} \label{tabP3} \vspace{-0.2cm}
+\caption{Erro percentual de cada método aplicado e método ótimo para as imagens de QR Code submetidas ao padrão de Iluminação 3.} \label{tabP3} \vspace{-0.2cm}
 \resizebox{\textwidth}{!}{ %
-\begin{tabular}{c c c c c c} \hline
-\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{ EH(\%)}&\textbf{S(\%)}&\textbf{Método Ótimo} \\\hline
-QR Code 1 & 50.18\% & 12.95\% & 19.76\% & 10.08\% & S \\
-QR Code 2 & 50.14\% & 17.52\% & 19.01\% & 16.21\% & S \\
-QR Code 3 & 49.89\% & 34.73\% & 34.24\% & 23.43\% & S \\
-QR Code 4 & 50.92\% & 22.52\% & 22.43\% & 11.45\% & S \\
-QR Code 5 & 49.10\% & 37.85\% & 37.80\% & 22.38\% & S \\
-QR Code 6 & 49.44\% & 31.20\% & 31.58\% & 20.69\% & S \\
-QR Code 7 & 48.97\% & 34.08\% & 34.11\% & 31.68\% & S \\
-QR Code 8 & 48.47\% & 19.39\% & 11.75\% & 12.04\% & EH \\
-QR Code 9 & 49.76\% & 26.38\% & 21.33\% & 27.20\% & EH \\
-QR Code 10 & 48.68\% & 25.77\% & 25.27\% & 23.97\% & S \\
-QR Code 11 & 50.53\% & 46.09\% & 46.09\% & 41.15\% & S \\
-QR Code 12 & 49.33\% & 38.25\% & 45.57\% & 47.12\% & LV \\
-QR Code 13 & 49.12\% & 45.98\% & 44.43\% & 28.88\% & S \\\hline
+\begin{tabular}{c c c c c c} \toprule
+\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{ EH(\%)}&\textbf{S(\%)}&\textbf{Método Ótimo} \\\midrule
+QR Code 1 & 50,18\% & 12,95\% & 19,76\% & 10,08\% & S \\
+QR Code 2 & 50,14\% & 17,52\% & 19,01\% & 16,21\% & S \\
+QR Code 3 & 49,89\% & 34,73\% & 34,24\% & 23,43\% & S \\
+QR Code 4 & 50,92\% & 22,52\% & 22,43\% & 11,45\% & S \\
+QR Code 5 & 49,10\% & 37,85\% & 37,80\% & 22,38\% & S \\
+QR Code 6 & 49,44\% & 31,20\% & 31,58\% & 20,69\% & S \\
+QR Code 7 & 48,97\% & 34,08\% & 34,11\% & 31,68\% & S \\
+QR Code 8 & 48,47\% & 19,39\% & 11,75\% & 12,04\% & EH \\
+QR Code 9 & 49,76\% & 26,38\% & 21,33\% & 27,20\% & EH \\
+QR Code 10 & 48,68\% & 25,77\% & 25,27\% & 23,97\% & S \\
+QR Code 11 & 50,53\% & 46,09\% & 46,09\% & 41,15\% & S \\
+QR Code 12 & 49,33\% & 38,25\% & 45,57\% & 47,12\% & LV \\
+QR Code 13 & 49,12\% & 45,98\% & 44,43\% & 28,88\% & S \\\bottomrule
 \end{tabular}%
 }
 \end{scriptsize}
 \end{minipage}
+
+
 
 \vspace{0.5cm}
 \section{CONCLUSÕES}
@@ -464,7 +459,7 @@ Disponível em \url{https://octave.sourceforge.io/}. Acesso em jul. 2019.
 
 \bibitem{gonzales}	
     R. C. Gonzales, R. E. Woods,
-    “Processamento Digial de Imagens”, 
+    “Processamento Digital de Imagens”, 
     3. ed. , São Paulo, Pearson Prentice Hall, 2010.
 
 \end{thebibliography}

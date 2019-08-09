@@ -12,7 +12,7 @@
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{float}
-%\usepackage{wrapfig}
+\usepackage{multirow}
 %%===========================
 
 % Dados do trabalho
@@ -287,7 +287,7 @@ Neste artigo escolheu-se $n=9$, para o qual observa-se os resultados sobre as im
 
 \section{Análise dos resultados} \label{resultados}
 Aplicando-se o processo descrito no fluxograma da Figura \ref{fluxograma} para todas as imagens coletadas, obtém-se os resultados das Tabelas \ref{tabP1}, \ref{tabP2} e \ref{tabP3}, as quais informam os erros associados aos métodos aplicados e o método eficaz, ou seja o que dentre eles apresentou menor erro, para as imagens dos padrões de Iluminação 1, 2 e 3. 
-Além disso, a exposição na forma numérica da taxa de erro, realizada visualmente a partir das imagens diferenças das Figuras \ref{figLF}, \ref{figLV}, \ref{figEH} e \ref{figS}, permite ponderar certos aspectos que correlacionam os métodos aos padrões de iluminação.
+Além disso, a exposição na forma numérica da taxa de erro, realizada visualmente a partir das imagens diferença das Figuras \ref{figLF}, \ref{figLV}, \ref{figEH} e \ref{figS}, permite ponderar certos aspectos que correlacionam os métodos aos padrões de iluminação.
 
 A respeito dos métodos de binarização por limiar, há certa dificuldade em determinar qual métodos, \emph{LF} ou \emph{LV}, proporciona melhor resultado para uma determinada imagem, uma vez que deve-se considerar o efeito dos píxeis pretos intrínsecos ao código a determinação da intensidade média $M$. Explana-se que quanto maior for o número de versão do código tem-se a certeza da maior presença de píxeis de baixa intensidade na imagem (ou seja, mais escuros), mesmo quando exposto a ambientes de alto nível de luminosidade. Nesse sentido, $M$ tende a adquirir menor valor numérico, podendo inclusive ser infe-
 \columnbreak
@@ -306,10 +306,31 @@ A respeito dos métodos de binarização por limiar, há certa dificuldade em de
 \caption{Imagens resultantes da Binarização em Sub-regiões para o QR Code 3 nos padrões de (a) Iluminação 1, (c) Iluminação 2 e (e) Iluminação 3, com suas respectivas imagens diferença em (b), (d) e (f).} \label{figS}
 \end{minipage}
 
-\vspace{0.4cm}
-\noindent rior a 128, logo pode ser ineficaz como limiar na binarização da imagem cuja iluminação a qual foi exposta exige limiar mais elevado. Para essas situações \emph{LF} pode ser método eficaz ou pelo menos superior a \emph{LV}, o que se confere nos resultados da Tabela \ref{tabP2} para as imagens de QR Codes de versões elevadas do padrão de Iluminação 2.
+\vspace{0.95cm}
+\noindent rior a 128, logo pode ser ineficaz como limiar na binarização da imagem cuja iluminação a qual foi exposta exige limiar de maior intensidade. Para essas situações \emph{LF} pode ser método eficaz ou pelo menos superior a \emph{LV}, o que se confere nos resultados da Tabela \ref{tabP2} para as imagens de QR Codes de versões elevadas do padrão de Iluminação 2.
 
 Note também que analisando imagem a imagem, os valores percentuais de erro concentram-se em intervalos bem definidos para os padrões Iluminação 1 e 2, haja vista que as intensidades dos píxeis encontram-se melhor distribuídas ao longo da escala de cinza, o que garante $M$ nas proximidades da metade da escala de cinza (ou seja, 128), como se verifica nos histogramas da Figura \ref{exemplo}. Esse comportamento não ocorre, entretanto, para o padrão de Iluminação 3, pois, devido à sua natureza escura, técnicas que envolvem somente uma etapa, como \emph{LF} e \emph{LV}, em geral dispõem de maiores taxa de erro, já que é necessário primeiro otimização do contraste da imagem, seja por meio da equalização de histograma (\emph{Método EH}) ou pela obtenção de limiares em subregiões (\emph{Método S}), das quais, individualmente, espera-se melhor distribuição das intensidades dos píxeis.
+
+\begin{comment}
+\vspace{0.4cm}
+\hspace{-0.38cm}
+\begin{minipage}[h]{\columnwidth}
+\begin{scriptsize} 
+\def\arraystretch{1.38}
+\captionsetup{type=table}
+\caption{Erro percentual de cada método aplicado e método eficaz para as imagens de QR Code submetidas ao padrão de Iluminação 1.} \label{tabP1} \vspace{-0.2cm}
+\resizebox{\textwidth}{!}{ %
+\begin{tabular}{ccccc}\toprule
+\multirow{2}{*}{Nome do QR Code} & \multicolumn{4}{c}{Método de Binarização} \\ \cline{2-5}
+                                 & LF       & LV       & EH       & S        \\\midrule
+1                                & 5.5      & 7.7      & 7.7      & 5.5      \\
+2                                & 7.7      & 7.7      & 7.7      & 5.5      \\
+3                                & 7.7      & 7.7      & 7.7      & 5.5     \\\bottomrule
+\end{tabular}%
+}
+\end{scriptsize}
+\end{minipage}
+\end{comment}
 
 \vspace{0.4cm}
 \hspace{-0.38cm}
@@ -320,7 +341,7 @@ Note também que analisando imagem a imagem, os valores percentuais de erro conc
 \caption{Erro percentual de cada método aplicado e método eficaz para as imagens de QR Code submetidas ao padrão de Iluminação 1.} \label{tabP1} \vspace{-0.2cm}
 \resizebox{\textwidth}{!}{ %
 \begin{tabular}{c c c c c c} \toprule
-\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{EH(\%)}&\textbf{S(\%)}&\textbf{Método Eficaz} \\\midrule
+\textbf{Nome do QR Code}&\textbf{LF (\%)}&\textbf{LV (\%)}&\textbf{EH (\%)}&\textbf{S (\%)}&\textbf{Método Eficaz} \\\midrule
 QR Code 1 & 5,45\% & 5,57\% & 7,95\% & 5,60\% & LF \\
 QR Code 2 & 11,17\% & 11,14\% & 11,34\% & 11,15\% & LV \\
 QR Code 3 & 15,27\% & 13,97\% & 14,26\% & 13,66\% & S \\
@@ -348,7 +369,7 @@ QR Code 13 & 34,76\% & 28,69\% & 28,83\% & 29,29\% & LV \\\bottomrule
 \caption{Erro percentual de cada método aplicado e método eficaz para as imagens de QR Code submetidas ao padrão de Iluminação 2.} \label{tabP2} \vspace{-0.2cm}
 \resizebox{\textwidth}{!}{ %
 \begin{tabular}{c c c c c c} \toprule
-\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{EH(\%)}&\textbf{S(\%)}&\textbf{Método Eficaz} \\\midrule
+\textbf{Nome do QR Code}&\textbf{LF (\%)}&\textbf{LV (\%)}&\textbf{EH (\%)}&\textbf{S (\%)}&\textbf{Método Eficaz} \\\midrule
 QR Code 1 & 10,97\% & 10,97\% & 10,78\% & 10,98\% & EH \\
 QR Code 2 & 7,43\% & 7,86\% & 7,60\% & 7,99\% & LF \\
 QR Code 3 & 20,33\% & 20,73\% & 20,33\% & 21,00\% & LF \\
@@ -376,7 +397,7 @@ QR Code 13 & 47,12\% & 51,13\% & 49,16\% & 49,05\% & LF \\\bottomrule
 \caption{Erro percentual de cada método aplicado e método eficaz para as imagens de QR Code submetidas ao padrão de Iluminação 3.} \label{tabP3} \vspace{-0.2cm}
 \resizebox{\textwidth}{!}{ %
 \begin{tabular}{c c c c c c} \toprule
-\textbf{Nome do QR Code}&\textbf{LF(\%)}&\textbf{LV(\%)}&\textbf{EH(\%)}&\textbf{S(\%)}&\textbf{Método Eficaz} \\\midrule
+\textbf{Nome do QR Code}&\textbf{LF (\%)}&\textbf{LV (\%)}&\textbf{EH (\%)}&\textbf{S (\%)}&\textbf{Método Eficaz} \\\midrule
 QR Code 1 & 50,18\% & 12,95\% & 19,76\% & 10,08\% & S \\
 QR Code 2 & 50,14\% & 17,52\% & 19,01\% & 16,21\% & S \\
 QR Code 3 & 49,89\% & 34,73\% & 34,24\% & 23,43\% & S \\

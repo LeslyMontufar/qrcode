@@ -285,32 +285,13 @@ Neste artigo escolheu-se $n=9$, para o qual observa-se os resultados na Figura \
 \caption{Imagens resultantes da Binarização Pós Equalização por Histograma para o QR Code 3 nos padrões de (a) Iluminação 1, (c) Iluminação 2 e (e) Iluminação 3, com suas respectivas imagens diferença em (b), (d) e (f).} \label{figEH}
 \end{minipage}
 
-
 \section{Análise dos resultados} \label{resultados}
+Aplicando-se o processo descrito no fluxograma da Figura \ref{fluxograma} para as imagens coletadas obtém-se os resultados das Tabelas \ref{tabP1}, \ref{tabP2} e \ref{tabP3}, as quais informam os erros associados aos métodos aplicados e o método eficaz, ou seja que apresentou menor erro, para as imagens dos padrões de Iluminação 1, 2 e 3. 
 
-\subsection{Tabela de erros para as capturas do QR Code 3}
-A aplicação dos diferentes métodos de binarização desenvolvidos e a subsequente comparação com o símbolo QR representado nas imagens de cada padrão permitiu a elaboração da Tabela \ref{tabela-erros}. Nela são contemplados os erros a associados a cada método aplicado aos padrões de Iluminação 1, 2 e 3. 
+A respeito dos métodos de binarização por limiar, verifica-se a inexistência de relação fixa de eficácia entre eles, já que nem sempre a aplicação do método \emph{LV} trará melhor resultado que o \emph{LF}. Deve considerar-se que os píxeis pretos intrínsecos ao código afetam na determinação da intensidade média $M$ da imagem utilizada para a binarização, por conseguinte, quanto maior o tamanho do símbolo, ou seja maior número de versão, maior será a quantidade de píxeis escuros instrínsecos ao código que influenciarão $M$. Para essas situações \emph{LF} pode ser método eficaz ou pelo menos superior a \emph{LV}, o que se confere nos resultados da Tabela \ref{tabP2} para as imagens de QR Codes de versões elevadas do padrão de Iluminação 2.
 
-\vspace{0.2cm}
-\begin{minipage}[h]{\columnwidth}
-\begin{scriptsize}
-\def\arraystretch{1.35}
-    \captionsetup{type=table}
-    \begin{center}
-    \caption{Erros associados às capturas de imagem do QR Code 3} \label{tabela-erros} \vspace{-0.2cm}
-    \begin{tabular}{ c  c  c  c } \toprule
-    \textbf{Método}&  \textbf{Iluminação 1}& \textbf{Iluminação 2}& \textbf{Iluminação 3}\\\midrule
-     LF & 15,27\% & 20,33\% & 49,89\%\\
-     LV & 13,97\% & 20,73\% & 34,73\%\\
-     EH & 14,26\% & 20,33\% & 34,24\%\\
-     S   & 13,66\% & 21,00\% & 23,43\%\\\bottomrule
-    \end{tabular}
-   \end{center}
-\end{scriptsize}
-\end{minipage}
-\vspace{0.2cm}
+Note também que analisando imagem a imagem, os valores percentuais de erro concentram-se em intervalos bem defini-\\
 
-Em especial para o \emph{Método S}, afirma-se que obteve baixo nível de erro, com excessão da imagem no padrão de Iluminação 2, cuja irregularidade acentuada provocou que, na separação, as regiões mais claras fossem mais afetadas pelos níveis de intensidades mais escuros intrínsecos do código.
 
 % imagem monocromatica = ou em escala de cinza
 \hspace{-0.38cm}
@@ -327,12 +308,8 @@ Em especial para o \emph{Método S}, afirma-se que obteve baixo nível de erro, 
 \end{minipage}
 
 \vspace{0.4cm}
+dos para os padrões Iluminação 1 e 2, haja vista que as intensidades dos píxeis encontram-se melhor distribuídas ao longo da escala de cinza, como se verifica nos histogramas da Figura \ref{exemplo}. Esse comportamento não ocorre para o padrão de Iluminação 3, pois, devido à sua natureza escura, técnicas que envolvem somente uma etapa, como como \emph{LF} e \emph{LV}, são insatisfatórias, já que é necessário primeiro otimização do contraste da imagem, seja por meio da equalização de histograma ou pela análise em subregiões, das quais, individualmente, espera-se melhor distribuição das intensidades dos píxeis.
 
-Aplicando-se o processo descrito no fluxograma da Figura \ref{fluxograma} para as imagens coletadas obtém-se os resultados das Tabelas \ref{tabP1}, \ref{tabP2} e \ref{tabP3}, as quais informam os erros associados aos métodos aplicados e o método eficaz, ou seja que apresentou menor erro, para as imagens dos padrões de Iluminação 1, 2 e 3. 
-
-A respeito dos métodos de binarização por limiar, verifica-se a inexistência de relação fixa de eficácia entre eles, já que nem sempre a aplicação do método \emph{LV} trará melhor resultado que o \emph{LF}. Deve considerar-se que os píxeis pretos intrínsecos ao código afetam na determinação da intensidade média $M$ da imagem utilizada para a binarização, por conseguinte, quanto maior o tamanho do símbolo, ou seja maior número de versão, maior será a quantidade de píxeis escuros instrínsecos ao código que influenciarão $M$. Para essas situações \emph{LF} pode ser método eficaz ou pelo menos superior a \emph{LV}, o que se confere nos resultados da Tabela \ref{tabP2} para as imagens de QR Codes de versões elevadas do padrão de Iluminação 2.
-
-Note também que analisando imagem a imagem, os valores percentuais de erro concentram-se em intervalos bem definidos para os padrões Iluminação 1 e 2, haja vista que as intensidades dos píxeis encontram-se melhor distribuídas ao longo da escala de cinza, como se verifica nos histogramas da Figura \ref{exemplo}. Esse comportamento não ocorre para o padrão de Iluminação 3, pois, devido à sua natureza escura, técnicas que envolvem somente uma etapa, como como \emph{LF} e \emph{LV}, são insatisfatórias, já que é necessário primeiro otimização do contraste da imagem, seja por meio da equalização de histograma ou pela análise em subregiões, das quais, individualmente, espera-se melhor distribuição das intensidades dos píxeis.
 
 \vspace{0.4cm}
 \hspace{-0.38cm}
@@ -417,6 +394,28 @@ QR Code 13 & 49,12\% & 45,98\% & 44,43\% & 28,88\% & S \\\bottomrule
 }
 \end{scriptsize}
 \end{minipage}
+
+\subsection{Tabela de erros para as capturas do QR Code 3}
+%A aplicação dos diferentes métodos de binarização desenvolvidos e a subsequente comparação com o símbolo QR representado nas imagens de cada padrão permitiu a elaboração da Tabela \ref{tabela-erros}. Nela são contemplados os erros a associados a cada método aplicado aos padrões de Iluminação 1, 2 e 3. 
+
+\vspace{0.2cm}
+\begin{minipage}[h]{\columnwidth}
+\begin{scriptsize}
+\def\arraystretch{1.35}
+    \captionsetup{type=table}
+    \begin{center}
+    \caption{Erros associados às capturas de imagem do QR Code 3} \label{tabela-erros} \vspace{-0.2cm}
+    \begin{tabular}{ c  c  c  c } \toprule
+    \textbf{Método}&  \textbf{Iluminação 1}& \textbf{Iluminação 2}& \textbf{Iluminação 3}\\\midrule
+     LF & 15,27\% & 20,33\% & 49,89\%\\
+     LV & 13,97\% & 20,73\% & 34,73\%\\
+     EH & 14,26\% & 20,33\% & 34,24\%\\
+     S   & 13,66\% & 21,00\% & 23,43\%\\\bottomrule
+    \end{tabular}
+   \end{center}
+\end{scriptsize}
+\end{minipage}
+\vspace{0.2cm}
 
 \section{CONCLUSÕES}
 A tecnologia de reconhecimento de QR Code enfrenta problemas significativos provocados principalmente pelo ambiente de filmagem, a exemplo disso cita-se a iluminação irregular no momento da captura da imagem. Por isso, é necessária a aplicação de um método de binarização, nesse sentido, no artigo foram desenvolvidos e propostos três alternativas para esse processamento. Submetendo-se capturas de símbolos QR em três distintos padrões de luminosidade aos métodos desenvolvidos, observou-se a melhor eficácia de métodos que levavam em consideração características mais gerais sobre padrões mais claros, como os \emph{Métodos LF} e \textit{LV}, enquanto que para iluminações de irregularidade extrema ou escuras, métodos preconizando etapas otimização de contraste (\emph{Métodos EH}) ou de binarização localizada (\emph{Métodos S}) trouxeram melhores resultados, pois proporcionaram, à binarização, um limiar mais adequado. Assim, ainda que apresentando certa porcentagem de erro, o método eficaz permite a identificação do símbolo QR.

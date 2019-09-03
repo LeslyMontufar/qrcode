@@ -59,7 +59,7 @@ urlcolor=blue}
     {\large
       \lineskip .5em%
       \begin{tabular}[t]{c}%
-        \@author
+        %\@author
       \end{tabular}
       \par}%
     %\vskip 1em%

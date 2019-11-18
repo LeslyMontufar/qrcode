@@ -20,24 +20,21 @@
 
 % Autores: o primeiro será, necessariamente, o apresentador do trabalho
 % Caso o trabalho não tenha 8 autores, exclua os campos que não foram preenchidos
-%\author[1]{\underline{Lesly Viviane Montúfar Berrios}\thanks{leslymontufar@ufu.br}}
-%\author[2]{Luciano Xavier Medeiros\thanks{lucianox@ufu.br}}
-%\author[2]{Alexandre Coutinho Mateus\thanks{acmateus@ufu.br}}
+\author[1]{\underline{Lesly Viviane Montúfar Berrios}\thanks{leslymontufar@ufu.br}}
+\author[2]{Luciano Xavier Medeiros\thanks{lucianox@ufu.br}}
+\author[2]{Alexandre Coutinho Mateus\thanks{acmateus@ufu.br}}
 
 %\author[1]{\underline{Primeiro Autor Apresentador}\thanks{primeiroautorapresentador@ufu.br}}
 %\author[2]{Segundo Autor Orientador\thanks{segundoautor@ufu.br}}
 %\author[2]{Terceiro Autor Orientador\thanks{terceiroautor@ufu.br}}
 
 % Adicione as instituições de cada autor e indique corretamente no campo acima
-%\affil[1]{FEELT - Universidade Federal de Uberlândia}
-%\affil[2]{FEELT - Professor Adjunto - Universidade Federal de Uberlândia}
-
-
+\affil[1]{FEELT - Universidade Federal de Uberlândia}
+\affil[2]{FEELT - Professor Adjunto - Universidade Federal de Uberlândia}
 
 \begin{document}
-
 \inserirtitulo
-\vspace{2.8cm}
+%\vspace{2.8cm}
 
 \begin{multicols}{2}
 
@@ -65,9 +62,7 @@
 \section{Introdução}
 Com surgimento no Japão em 1994, os \textit{Quick Response Codes} (\textit{QR Codes}) são marca registrada da empresa Denso-Wave Incorporated, uma subsidiária da Toyota, cujo propósito de criação estava em facilitar o processo de catalogação de componentes automobilísticos \cite{denso}. Entretanto, sua utilização não se ateve a essa finalidade, devido à grande velocidade em que podem ser lidos e decodificados eletronicamente. Além disso, é uma ferramenta que tem sido bastante difundida mundialmente, em virtude do rápido desenvolvimento de dispositivos portáteis capazes de ler QR Codes e ao crescente uso comercial associado, em especial, à área de marketing.
 
-Em termos práticos, a utilização de telefones celulares, câmeras digitais ou outros equipamentos para a coleta da imagem de código QR pode apresentar empecilhos significantes para o reconhecimento do símbolo, ocasionados tanto por fatores do ambiente, quanto pela forma de manuseio do usuário. Sob essa perspectiva, o ambiente de captura mostra-se como aspecto de bastante relevância e associa-se, principalmente, às irregularidades da iluminação. Outrossim, o manuseio do equipamento pelo usuário pode provocar distorção geométrica, problemática amenizada como propõe, por exemplo, 
-Wei et al. \cite{jin-wei}, por meio de um método de correção de imagem
-de código QR com base em morfologia, que consiste na obteção de informações relativas à geometria de topologia de um conjunto desconhecido a partir de outro conjunto bem definido, e Transformada de Hough, método padrão
+Em termos práticos, a utilização de telefones celulares, câmeras digitais ou outros equipamentos para a coleta da imagem de código QR pode apresentar empecilhos significantes para o reconhecimento do símbolo, ocasionados tanto por fatores do ambiente, quanto pela forma de manuseio do usuário. Sob essa perspectiva, o ambiente de captura mostra-se como aspecto de bastante relevância e associa-se, principalmente, às irregularidades da iluminação. Pode existir também o empecilho distorção geométrica, ocasionada durante o manuseio do equipamento, para isso Wei et al. \cite{jin-wei} propõe um método de correção com base em morfologia, a qual consiste na obtenção de informações relativas à geometria de topologia de um conjunto desconhecido a partir de outro bem definido, e Transformada de Hough, método padrão
 para detecção de formas que são facilmente parametrizadas (linhas, círculos, elipses etc) em imagens digitalizadas.
 
 Suran \cite{k-suran} desenvolveu um algoritmo de correção de imagem de código QR baseado em Algoritmo de Detecção de Canto e Casco
@@ -80,7 +75,7 @@ A temática deste artigo, no entanto, contempla os obstáculos devido a padrões
 Na Seção \ref{caracteristicas} serão apresentadas características básicas dos QR Codes. Na Seção \ref{metodologia}, o procedimento realizado para a coleta de imagens e exemplificação do impacto provocado pela iluminação irregular Já na Seção \ref{metodos}, são descritos e exemplificados os algoritmos das técnicas de binarização desenvolvidas, assim como realizada a análise de eficiência para as imagens do exemplo. Finalmente, na Seção \ref{resultados}, discute-se acerca dos resultados obtidos com os métodos propostos neste artigo.
 
 \section{Características dos Códigos QR} \label{caracteristicas}
-O codificação QR baseia-se na disposição de pequenos quadrados, normalmente de cores preta e branca, os quais são chamados de \textit{módulos}. Tem-se também que o tamanho do código é determinado pelo número da versão, considerando que a Versão 1 possui dimensão de $21\times21$ módulos e para as versões subsequentes há o acréscimo linear de 4 módulos, ou seja, a Versão 2 possui dimensões de $25\times25$ módulos, a Versão 3, $29\times29$ módulos, e assim por diante. 
+A codificação QR baseia-se na disposição de pequenos quadrados, normalmente de cores preta e branca, os quais são chamados de \textit{módulos}. Tem-se também que o tamanho do código é determinado pelo número da versão, considerando que a Versão 1 possui dimensão de $21\times21$ módulos e para as versões subsequentes há o acréscimo linear de 4 módulos, ou seja, a Versão 2 possui dimensões de $25\times25$ módulos, a Versão 3, $29\times29$ módulos, e assim por diante. 
 
 QR Codes contêm também uma técnica de correção de erro que, a partir da inserção de dados redundantes à imagem, permite a extração da informação contida no código, mesmo que a superfície no qual foi impresso esteja danificada. Logo, quanto maior a capacidade de correção, menor o espaço para o armazenamento de dados. A Tabela \ref{nivel-correcao} descreve os 4 possíveis níveis de correção de erro.
 

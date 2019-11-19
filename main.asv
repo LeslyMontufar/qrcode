@@ -79,7 +79,7 @@
   % Informações uteis para a tabela (Opcional)
   Photo.version(ii) = str2num(QR.filename{1, ii}(10:11));
   Photo.errcorrection(ii) = QR.filename{1, ii}(13);
-  [tabela.err(ii) ierr] = min([Image{1, ii}.M{1,1}.err Image{1, ii}.M{1,2}.err Image{1, ii}.M{1,3}.err Image{1, ii}.M{1,4}.err]);
+  [tabela.err(ii), ierr] = min([Image{1, ii}.M{1,1}.err Image{1, ii}.M{1,2}.err Image{1, ii}.M{1,3}.err Image{1, ii}.M{1,4}.err]);
   tabela.method{1, ii} = Image{1, ii}.M{1, ierr}.ref;
   
   % Salva linha por linha da tabela (Opcional)
@@ -120,7 +120,7 @@ function savehist(im, name)
     imwrite(im.cutted, [nome '-' im.ref '.jpg']);
   end 
   function im_new = redimensiona(im_original, n)
-    [row, col, e] = size(im_original);
+    [row, col, ~] = size(im_original);
     x = n/((row*col)^(1/2));
     im_new = imresize(im_original, [floor(row*x) floor(col*x)], 'nearest');
   end 

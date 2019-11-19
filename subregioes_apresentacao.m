@@ -45,10 +45,10 @@ function [T] = subregioes(n, im_original, im_modelo)
         T.result_init(:, :, number) = im_original((i-1)*T.lines + 1 : i*T.lines, ...
         (j-1)*T.col + 1 : j*T.col);
         
+        subplot(n, n, number);imshow(T.result_init(:, :, number));
+        
         T.constant(number) = mean(mean(T.result_init(:, :, number)));
         T.result_thres(:,:, number) = threshold(T.constant(number), T.result_init(:,:, number));
-        
-        subplot(n, n, number);imshow(T.result_thres(:, :, number));
         
         % junta as partes da imagem binarizada
         T.result((i-1)*T.lines + 1 : i*T.lines, ...
